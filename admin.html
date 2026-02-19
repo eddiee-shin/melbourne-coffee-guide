@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멜번 커피 가이드 - 관리자</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6B4226;
+            --primary-light: #8B6914;
+            --bg: #1a1a2e;
+            --card-bg: #16213e;
+            --surface: #0f3460;
+            --text: #e6e6e6;
+            --text-muted: #a0a0b0;
+            --accent: #e94560;
+            --success: #4ecca3;
+            --border: #2a2a4a;
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .admin-header {
+            background: linear-gradient(135deg, var(--card-bg), var(--surface));
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .admin-header h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f5af19, #f12711);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .admin-header .subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-save {
+            background: linear-gradient(135deg, var(--success), #2ecc71);
+            color: #1a1a2e;
+        }
+
+        .btn-save:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(78, 204, 163, 0.4);
+        }
+
+        .btn-reset {
+            background: rgba(233, 69, 96, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-reset:hover {
+            background: rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--text);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 999;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast-success {
+            background: var(--success);
+            color: #1a1a2e;
+        }
+
+        .toast-error {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Stats */
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stat-item {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .stat-item strong {
+            color: var(--success);
+            font-size: 1.1rem;
+        }
+
+        /* Cafe Grid */
+        .cafe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 20px;
+            padding: 25px 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cafe-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .cafe-card:hover {
+            border-color: rgba(78, 204, 163, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cafe-card.modified {
+            border-color: var(--success);
+            box-shadow: 0 0 0 1px var(--success);
+        }
+
+        .card-top {
+            display: flex;
+            gap: 12px;
+            padding: 15px;
+            align-items: flex-start;
+        }
+
+        .cafe-image-wrapper {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px dashed var(--border);
+            transition: border-color 0.2s;
+        }
+
+        .cafe-image-wrapper:hover {
+            border-color: var(--success);
+        }
+
+        .cafe-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 0.75rem;
+            color: white;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .cafe-image-wrapper:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .cafe-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cafe-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .cafe-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .modified-badge {
+            display: inline-block;
+            background: var(--success);
+            color: #1a1a2e;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+
+        /* Editable Fields */
+        .field-group {
+            padding: 0 15px 15px;
+        }
+
+        .field-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .field-input {
+            width: 100%;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 0.9rem;
+            resize: vertical;
+            min-height: 60px;
+            transition: border-color 0.2s;
+        }
+
+        .field-input:focus {
+            outline: none;
+            border-color: var(--success);
+            background: rgba(78, 204, 163, 0.05);
+        }
+
+        .field-input.changed {
+            border-color: var(--success);
+        }
+
+        /* Hidden file input */
+        .file-input {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .cafe-grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .stats-bar {
+                padding: 12px 15px;
+                flex-wrap: wrap;
+            }
+
+            .header-actions {
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="admin-header">
+        <div>
+            <h1>☕ 멜번 커피 가이드 — 관리자</h1>
+            <div class="subtitle">카페 이미지와 한줄 설명을 관리합니다</div>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn-back" onclick="location.href='index.html'">← 돌아가기</button>
+            <button class="btn btn-reset" id="resetBtn">🔄 초기화</button>
+            <button class="btn btn-save" id="saveBtn">💾 저장하기</button>
+        </div>
+    </header>
+
+    <div class="stats-bar">
+        <div class="stat-item">총 카페: <strong id="totalCount">0</strong>개</div>
+        <div class="stat-item">수정됨: <strong id="modifiedCount">0</strong>개</div>
+    </div>
+
+    <div class="cafe-grid" id="cafeGrid"></div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+    <script>
+        // ===== Admin Page Logic =====
+        const STORAGE_KEY = 'coffeeGuideOverrides';
+        const grid = document.getElementById('cafeGrid');
+        const toast = document.getElementById('toast');
+
+        // Load saved overrides
+        function loadOverrides() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+            } catch { return {}; }
+        }
+
+        // Show toast notification
+        function showToast(msg, type = 'success') {
+            toast.textContent = msg;
+            toast.className = `toast toast-${type} show`;
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // Build the admin grid
+        function renderGrid() {
+            const overrides = loadOverrides();
+            grid.innerHTML = '';
+
+            coffeeShops.forEach((cafe, idx) => {
+                const override = overrides[cafe.name] || {};
+                const currentOneLiner = override.oneLiner ?? cafe.oneLiner;
+                const currentImage = override.image ?? cafe.image;
+                const isModified = !!overrides[cafe.name];
+
+                const card = document.createElement('div');
+                card.className = `cafe-card${isModified ? ' modified' : ''}`;
+                card.innerHTML = `
+                    <div class="card-top">
+                        <div class="cafe-image-wrapper" data-idx="${idx}">
+                            <img src="${currentImage}" alt="${cafe.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%232a2a4a%22 width=%22100%22 height=%22100%22/><text fill=%22%23666%22 font-size=%2214%22 x=%2250%22 y=%2255%22 text-anchor=%22middle%22>No Image</text></svg>'">
+                            <div class="image-overlay">📷 클릭하여<br>이미지 변경</div>
+                            <input type="file" class="file-input" accept="image/*" data-idx="${idx}">
+                        </div>
+                        <div class="cafe-info">
+                            <div class="cafe-name">
+                                ${cafe.name}
+                                ${isModified ? '<span class="modified-badge">수정됨</span>' : ''}
+                            </div>
+                            <div class="cafe-meta">📍 ${cafe.suburb} · ${cafe.location}</div>
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <div class="field-label">한줄 설명 (oneLiner)</div>
+                        <textarea class="field-input" data-idx="${idx}" data-field="oneLiner">${currentOneLiner}</textarea>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            // Update stats
+            document.getElementById('totalCount').textContent = coffeeShops.length;
+            document.getElementById('modifiedCount').textContent = Object.keys(overrides).length;
+
+            // Attach event listeners
+            attachListeners();
+        }
+
+        function attachListeners() {
+            // Image click → trigger file input
+            document.querySelectorAll('.cafe-image-wrapper').forEach(wrapper => {
+                wrapper.addEventListener('click', () => {
+                    wrapper.querySelector('.file-input').click();
+                });
+            });
+
+            // File input change → read image
+            document.querySelectorAll('.file-input').forEach(input => {
+                input.addEventListener('change', (e) => {
+                    const file = e.target.files[0];
+                    if (!file) return;
+
+                    const idx = parseInt(e.target.dataset.idx);
+                    const cafe = coffeeShops[idx];
+
+                    // Read as data URL for preview, but save file to images/
+                    const reader = new FileReader();
+                    reader.onload = (ev) => {
+                        const dataUrl = ev.target.result;
+                        const overrides = loadOverrides();
+
+                        if (!overrides[cafe.name]) overrides[cafe.name] = {};
+                        overrides[cafe.name].image = dataUrl;
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+
+                        // Update preview
+                        const img = e.target.closest('.cafe-image-wrapper').querySelector('img');
+                        img.src = dataUrl;
+
+                        // Mark card as modified
+                        e.target.closest('.cafe-card').classList.add('modified');
+                        const nameEl = e.target.closest('.cafe-card').querySelector('.cafe-name');
+                        if (!nameEl.querySelector('.modified-badge')) {
+                            nameEl.insertAdjacentHTML('beforeend', '<span class="modified-badge">수정됨</span>');
+                        }
+
+                        updateModifiedCount();
+                        showToast(`${cafe.name} 이미지 업데이트됨`);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            });
+        }
+
+        function updateModifiedCount() {
+            const overrides = loadOverrides();
+            document.getElementById('modifiedCount').textContent = Object.keys(overrides).length;
+        }
+
+        // Save button — save all textarea values
+        document.getElementById('saveBtn').addEventListener('click', () => {
+            const overrides = loadOverrides();
+
+            document.querySelectorAll('.field-input').forEach(input => {
+                const idx = parseInt(input.dataset.idx);
+                const field = input.dataset.field;
+                const cafe = coffeeShops[idx];
+                const currentValue = input.value.trim();
+                const originalValue = cafe[field];
+
+                if (currentValue !== originalValue) {
+                    if (!overrides[cafe.name]) overrides[cafe.name] = {};
+                    overrides[cafe.name][field] = currentValue;
+                } else if (overrides[cafe.name]) {
+                    delete overrides[cafe.name][field];
+                    if (Object.keys(overrides[cafe.name]).length === 0) {
+                        delete overrides[cafe.name];
+                    }
+                }
+            });
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(overrides));
+            showToast('✅ 모든 변경사항이 저장되었습니다!');
+            renderGrid(); // Re-render to update badges
+        });
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            if (confirm('모든 수정사항을 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.')) {
+                localStorage.removeItem(STORAGE_KEY);
+                showToast('🔄 모든 수정사항이 초기화되었습니다.');
+                renderGrid();
+            }
+        });
+
+        // Initialize
+        renderGrid();
+    </script>
+</body>
+
+</html>

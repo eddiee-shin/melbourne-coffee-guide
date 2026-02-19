@@ -410,6 +410,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         shops.forEach(shop => {
+            // Apply admin overrides from localStorage
+            const overrides = (() => {
+                try {
+                    const data = JSON.parse(localStorage.getItem('coffeeGuideOverrides')) || {};
+                    return data[shop.name] || {};
+                } catch { return {}; }
+            })();
+            const displayImage = overrides.image || shop.image;
+            const displayOneLiner = overrides.oneLiner || shop.oneLiner;
+
             const el = document.createElement('div');
             el.className = 'result-card';
 
@@ -422,7 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             el.innerHTML = `
                 <div class="shop-image">
-                    <img src="${shop.image}" alt="${shop.name}" onerror="this.parentElement.style.background='#e8d5c4'; this.style.display='none';">
+                    <img src="${displayImage}" alt="${shop.name}" onerror="this.parentElement.style.background='#e8d5c4'; this.style.display='none';">
                 </div>
                 <div class="card-header">
                     <h3>${shop.name}</h3>
@@ -432,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="shop-location">📍 ${shop.suburb}</div>
                     <div class="shop-tags">${tagsHtml}</div>
                     <p class="shop-desc">${shop.desc}</p>
-                    <div class="one-liner">"${shop.oneLiner}"</div>
+                    <div class="one-liner">"${displayOneLiner}"</div>
                 </div>
             `;
             resultsContainer.appendChild(el);

@@ -354,6 +354,48 @@ const coffeeShops = [
     }
 ];
 
+const ratingsData = {
+    "Zest Specialty Coffee": { rating: 4.8, reviews: 350 },
+    "ONA Coffee": { rating: 4.8, reviews: 1500 },
+    "Proud Mary": { rating: 4.4, reviews: 3500 },
+    "ACOFFEE": { rating: 4.6, reviews: 500 },
+    "INI Studio": { rating: 4.7, reviews: 800 },
+    "Market Lane Coffee": { rating: 4.7, reviews: 1200 },
+    "Good Measure": { rating: 4.8, reviews: 600 },
+    "Small Batch Roasting Co.": { rating: 4.8, reviews: 500 },
+    "Vacation Coffee": { rating: 4.6, reviews: 600 },
+    "Seven Seeds": { rating: 4.4, reviews: 5000 },
+    "Disciple Roasters": { rating: 4.9, reviews: 200 },
+    "Tone Coffee": { rating: 4.8, reviews: 300 },
+    "Patricia Coffee Brewers": { rating: 4.8, reviews: 4000 },
+    "Bench Coffee Co.": { rating: 4.6, reviews: 1000 },
+    "Core Roasters": { rating: 4.7, reviews: 300 },
+    "St Ali": { rating: 4.1, reviews: 6000 },
+    "Axil Coffee Roasters": { rating: 4.4, reviews: 2000 },
+    "Code Black Coffee": { rating: 4.5, reviews: 1500 },
+    "Wide Open Road": { rating: 4.3, reviews: 2500 },
+    "Industry Beans": { rating: 4.2, reviews: 3000 },
+    "Dukes Coffee Roasters": { rating: 4.7, reviews: 4500 },
+    "Rumble Coffee": { rating: 4.9, reviews: 400 },
+    "Padre Coffee": { rating: 4.5, reviews: 1000 },
+    "Commonfolk Coffee": { rating: 4.6, reviews: 2000 },
+    "Brother Baba Budan": { rating: 4.6, reviews: 5000 },
+    "Monk Bodhi Dharma": { rating: 4.6, reviews: 1500 },
+    "Higher Ground": { rating: 4.2, reviews: 5000 },
+    "Auction Rooms": { rating: 4.4, reviews: 4000 },
+    "The Kettle Black": { rating: 4.3, reviews: 4000 }
+};
+
+coffeeShops.forEach(shop => {
+    if (ratingsData[shop.name]) {
+        shop.rating = ratingsData[shop.name].rating;
+        shop.reviews = ratingsData[shop.name].reviews;
+    } else {
+        shop.rating = 4.5;
+        shop.reviews = 100;
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('preference-form');
     const slider = document.getElementById('taste-slider');
@@ -379,12 +421,10 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
 
         const tastePref = parseInt(slider.value);
-        const selectedPrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => parseInt(cb.value));
         const atmosphere = document.getElementById('atmosphere').value;
         const location = document.getElementById('location').value;
 
         let suggestions = coffeeShops.filter(shop => {
-            if (selectedPrices.length > 0 && !selectedPrices.includes(shop.price)) return false;
             if (location !== 'any' && shop.location !== location) return false;
             if (atmosphere !== 'any' && !shop.atmosphere.includes(atmosphere)) return false;
             return true;
@@ -435,7 +475,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${displayImage}" alt="${shop.name}" onerror="this.parentElement.style.background='#e8d5c4'; this.style.display='none';">
                 </div>
                 <div class="card-header">
-                    <h3>${shop.name}</h3>
+                    <div class="header-main">
+                        <h3>${shop.name}</h3>
+                        <div class="google-rating">
+                            <span class="star">⭐</span> <span class="rating-value">${shop.rating}</span> <span class="review-count">(${shop.reviews.toLocaleString()})</span>
+                        </div>
+                    </div>
                     <div class="price-badge">${'💰'.repeat(shop.price)}</div>
                 </div>
                 <div class="card-body">

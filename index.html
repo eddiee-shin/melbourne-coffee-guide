@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멜번 커피 가이드 (Melbourne Coffee Guide)</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header class="hero">
+            <h1>☕ 멜번 커피 가이드</h1>
+            <p class="subtitle">나의 취향에 딱 맞는 멜번 스페셜티 커피를 찾아보세요.</p>
+        </header>
+
+        <section class="preferences">
+            <div class="card preference-card">
+                <h2>당신의 커피 취향은?</h2>
+                <form id="preference-form">
+                    <div class="form-group">
+                        <label for="taste-slider">맛의 스펙트럼</label>
+                        <div class="range-container">
+                            <span class="range-label fruity">🍓 산미/과일향<br><small>(Fruity/Acidity)</small></span>
+                            <input type="range" id="taste-slider" min="1" max="5" step="1" value="3">
+                            <span class="range-label nutty">🍫 고소함/바디감<br><small>(Nutty/Chocolatey)</small></span>
+                        </div>
+                        <div class="range-value-display" id="taste-display">밸런스 (Balance)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>가격대 (Price)</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" name="price" value="3" checked> ⭐⭐⭐ (보통)</label>
+                            <label><input type="checkbox" name="price" value="4" checked> ⭐⭐⭐⭐ (조금 비쌈)</label>
+                            <label><input type="checkbox" name="price" value="5" checked> ⭐⭐⭐⭐⭐ (가장 비쌈)</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="atmosphere">분위기 (Atmosphere)</label>
+                        <select id="atmosphere" class="full-width">
+                            <option value="any">상관없음 (Any)</option>
+                            <option value="modern">모던/미니멀 (Modern/_minimal)</option>
+                            <option value="cozy">아늑함/편안함 (Cozy/Comfort)</option>
+                            <option value="lively">활기참/힙함 (Lively/Hip)</option>
+                            <option value="unique">독특함/웅장함 (Unique/Grand)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">위치 (Location)</label>
+                        <select id="location" class="full-width">
+                            <option value="any">모두 (All Locations)</option>
+                            <option value="CBD">시내 (CBD)</option>
+                            <option value="Fitzroy/Collingwood">Fitzroy / Collingwood</option>
+                            <option value="Brunswick">Brunswick</option>
+                            <option value="South Melbourne">South Melbourne</option>
+                            <option value="North Melbourne">North Melbourne</option>
+                            <option value="Others">기타 (Others)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-primary">커피 추천받기</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="results-section" class="results hidden">
+            <h2>추천 카페 리스트</h2>
+            <div id="results-container" class="cards-grid">
+                <!-- Cards will be injected here via JS -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Reviews Modal -->
+    <div id="reviews-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div class="iframe-container">
+                <iframe id="reviews-iframe" src="" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

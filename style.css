@@ -1,0 +1,498 @@
+:root {
+    --primary-color: #6F4E37;
+    /* Coffee Bean */
+    --secondary-color: #D2691E;
+    /* Chocolate */
+    --accent-color: #FFA07A;
+    /* Fruity/Salmon */
+    --bg-color: #FDFBF7;
+    /* Cream/Paper */
+    --text-color: #333;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --radius: 16px;
+    --font-main: 'Outfit', sans-serif;
+    --font-body: 'Noto Sans KR', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+.preference-card h2 {
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Range Slider */
+.range-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.range-label {
+    font-size: 0.85rem;
+    text-align: center;
+    width: 80px;
+    line-height: 1.2;
+}
+
+.range-label.fruity {
+    color: #E74C3C;
+}
+
+.range-label.nutty {
+    color: #8D6E63;
+}
+
+input[type=range] {
+    flex-grow: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #FFB7B2, #D7BDE2, #A1887F);
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.range-value-display {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* Checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.checkbox-group label {
+    font-weight: 400;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Select */
+select.full-width {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background-color: #fafafa;
+}
+
+/* Button */
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    font-family: var(--font-main);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Results */
+.hidden {
+    display: none;
+}
+
+.results h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.result-card {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+}
+
+.shop-image {
+    width: 100%;
+    height: 180px;
+    background-color: #e8d5c4;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.shop-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.result-card:hover .shop-image img {
+    transform: scale(1.05);
+}
+
+.card-header {
+    padding: 20px;
+    background-color: #fcfcfc;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.card-header h3 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.price-badge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.shop-location {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.shop-tags {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: #eee;
+    color: #555;
+}
+
+.tag.fruity {
+    background-color: #FFEBEE;
+    color: #C62828;
+}
+
+.tag.nutty {
+    background-color: #EFEBE9;
+    color: #4E342E;
+}
+
+.tag.price {
+    background-color: #E8F5E9;
+    color: #2E7D32;
+}
+
+.shop-desc {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: #444;
+}
+
+.one-liner {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    .range-container {
+        flex-direction: column;
+    }
+
+    .range-label {
+        width: 100%;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-modal:hover {
+    color: var(--primary-color);
+}
+
+#modal-title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 75%;
+    /* 4:3 Aspect Ratio */
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.result-card {
+    cursor: pointer;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .result-card:hover {
+        transform: none;
+        /* disable hover lift on touch devices */
+    }
+
+    .shop-image {
+        height: 200px;
+    }
+
+    .card-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-primary {
+        padding: 16px;
+        font-size: 1.05rem;
+    }
+
+    /* Modal mobile */
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    #modal-title {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+    }
+
+    .iframe-container {
+        padding-bottom: 80%;
+        /* taller ratio on mobile */
+    }
+
+    .close-modal {
+        font-size: 24px;
+        top: 8px;
+        right: 12px;
+    }
+}
+
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .cards-grid {
+        gap: 12px;
+    }
+
+    .card-body {
+        padding: 12px;
+    }
+
+    .shop-desc {
+        font-size: 0.85rem;
+    }
+
+    .one-liner {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+}

@@ -8,6 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(SHEET_CSV_URL);
         const csvText = await response.text();
         coffeeShops = parseCSV(csvText);
+
+        // Update total cafe count on UI
+        const countSpan = document.getElementById('total-cafes');
+        if (countSpan) {
+            countSpan.textContent = coffeeShops.length;
+        }
     } catch (error) {
         console.error("Error loading coffee shop data from Google Sheets:", error);
     }

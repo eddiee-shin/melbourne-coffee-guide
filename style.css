@@ -80,19 +80,27 @@ label {
     color: var(--text-color);
 }
 
-/* Range Slider */
+/* Mobile-Friendly Wide Range Slider */
 .range-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     gap: 15px;
+    margin-bottom: 5px;
+    background: #fdfdfd;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .range-label {
-    font-size: 0.85rem;
-    text-align: center;
-    width: 80px;
-    line-height: 1.2;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .range-label.fruity {
@@ -104,30 +112,39 @@ label {
 }
 
 input[type=range] {
-    flex-grow: 1;
+    width: 100%;
     -webkit-appearance: none;
     appearance: none;
-    height: 8px;
+    height: 10px;
     border-radius: 5px;
     background: linear-gradient(to right, #FFB7B2, #D7BDE2, #A1887F);
     outline: none;
+    margin: 10px 0;
 }
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: var(--primary-color);
+    background: #fff;
+    border: 3px solid var(--primary-color);
     cursor: pointer;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:hover,
+input[type=range]::-webkit-slider-thumb:active {
+    transform: scale(1.15);
 }
 
 .range-value-display {
     text-align: center;
-    margin-top: 10px;
-    font-weight: 500;
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 1.15rem;
     color: var(--primary-color);
 }
 
@@ -333,11 +350,7 @@ select.full-width {
 
 @media (max-width: 600px) {
     .range-container {
-        flex-direction: column;
-    }
-
-    .range-label {
-        width: 100%;
+        padding: 15px 10px;
     }
 }
 

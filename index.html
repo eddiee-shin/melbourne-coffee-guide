@@ -27,9 +27,11 @@
                     <div class="form-group">
                         <label for="taste-slider">맛의 스펙트럼</label>
                         <div class="range-container">
-                            <span class="range-label fruity">🍓 산미/과일향<br><small>(Fruity/Acidity)</small></span>
+                            <div class="range-labels">
+                                <span class="range-label fruity">🍓 산미(Acidity)</span>
+                                <span class="range-label nutty">고소함(Nutty) 🍫</span>
+                            </div>
                             <input type="range" id="taste-slider" min="1" max="5" step="1" value="3">
-                            <span class="range-label nutty">🍫 고소함/바디감<br><small>(Nutty/Chocolatey)</small></span>
                         </div>
                         <div class="range-value-display" id="taste-display">밸런스 (Balance)</div>
                     </div>

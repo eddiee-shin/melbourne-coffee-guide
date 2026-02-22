@@ -1,4 +1,4 @@
-[
+const cafes = [
   {
     "name": "Zest Specialty Coffee",
     "location": "Others",
@@ -573,4 +573,4 @@
     "rating": 4.4,
     "reviews": 748
   }
-]
+];

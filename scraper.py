@@ -80,6 +80,11 @@ def search_cafes(query):
         photos = place.get("photos", [])
         photo_ref = photos[0].get("name", "") if photos else ""
         
+        user_rating_count = place.get("userRatingCount", 0)
+        if user_rating_count < 50:
+            print(f"  -> Skipping '{name}' (Low review count: {user_rating_count})")
+            continue
+            
         if not review_texts:
             print(f"  -> Skipping '{name}' (No reviews available for AI analysis)")
             continue
@@ -88,7 +93,7 @@ def search_cafes(query):
             "name": name,
             "address": place.get("formattedAddress", ""),
             "rating": place.get("rating", 0),
-            "reviews": place.get("userRatingCount", 0),
+            "reviews": user_rating_count,
             "review_texts": review_texts,
             "photo_reference": photo_ref
         })
@@ -196,8 +201,9 @@ if __name__ == "__main__":
     if sheet is None:
         exit(1)
         
-    # 2. Search for cafes generically
-    query = "best specialty coffee in Melbourne CBD"
+    # 2. Search for cafes generically or by argument
+    import sys
+    query = sys.argv[1] if len(sys.argv) > 1 else "best specialty coffee in Melbourne CBD"
     candidates = search_cafes(query)
     
     # 3. Filter Duplicates & Process

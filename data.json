@@ -763,5 +763,22 @@
     "lat": -37.8006736,
     "lng": 144.9533171,
     "signature": "Hot choc-berry"
+  },
+  {
+    "name": "MAKER Lt Bourke",
+    "location": "CBD",
+    "suburb": "CBD",
+    "spectrum": 2,
+    "price": 3,
+    "atmosphere": "modern|lively",
+    "desc": "멜버른 CBD에 위치한 이곳은 아침 시간 활기찬 분위기에서 모던한 인테리어와 외부 좌석을 즐기기 좋습니다. 산미 있는 커피를 선호하는 이들에게 롱블랙과 핸드드립이 특히 만족스러울 것입니다.",
+    "oneLiner": "멜버른 CBD의 활기찬 아침을 여는, 산미 좋은 커피와 친절함이 있는 공간",
+    "tags": "Acidity ⭐⭐⭐⭐|Vibrant",
+    "image": "https://places.googleapis.com/v1/places/ChIJw3ZAzdJD1moRdTHBsWBAcao/photos/ATCDNfVTUUPTjsq8cmm-LgKd4nNfULT6Lkcvl0vxGmbqPVDsOoZ91hY6xCd1WI13vJX-hhFmrQHChMcjSSOkDWcg1ajfZ9kM2KKGAx4nlcZX3Sbkuduq9c78RYlHoeCbiBGtCXz0AIgFAmR1MBZ9YrFf6wek8KN7fxUiT4CzFepA-USup6QKhn6XAAlK0MOXiYp5VeWwQ3otwfvUfd-BcOzwT2bi-9CcsTxf4d7TZ2Qo-OWpMzD09w5XQ1CvlG_hTT7TQs6SPeotaKoIVXB4kv6jjvcWn4PDI-PziGN9E7qe0mTArszhyrQ9u-x1dPNzr9eY7KqEkut-k2us3ZJzAC6rqxUCkBUsVJMBWJZhuzfSMFFBrtBIVvwHUk2SIZTRquyzH9sTXQo-gK7zrLxaPEXCjUUSTHySQ6BOsYKnkOPc6pU/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
+    "rating": 4.5,
+    "reviews": 625,
+    "lat": -37.8137885,
+    "lng": 144.9613945,
+    "signature": "롱블랙"
   }
 ]

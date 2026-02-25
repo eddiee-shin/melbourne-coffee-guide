@@ -11,7 +11,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Experimental",
     "image": "https://places.googleapis.com/v1/places/ChIJfWVX5S1D1moRFXmqAP7fzaw/photos/ATCDNfV2BXpOXQz2Ty9w3JCdv5rGg8ulxv6SkmR79o9DZqzJ8_4yUTlM6yN30xKIHJx0dnqPE-6udNrWPBCuAIH8vtnG_SMxAoG8pntuPGc9AdjxzJiJXsFn6B6qRYXE5YB6sCMPq7YgPgpUJPy8HYV87QI4cS5Vw24lqOkj3H3jLpxybsmcQffu9OyAsiaYK5xDtaAGRqrn3GzT6YP6Rl9lg_CKvpJv_-Ga-6odhDnTpdrkGQ0hg9zHZtwwLdbfrWvBZ2FzlMbjD6psHhLww7cX3PUyfeZ9I8m7uZjjNijPMDQxcO2YL2TFGv8QTngLQDlw6GUuzECb1aKDKy1drh_IYZi-C8VSAau42RhStYzJ4HpSXlQ790tEh3gwgoZuzJldZOuwaYNheWbd5zVy2TOHY7bl4lv_olwHRIms9NqCklA/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 350
+    "reviews": 350,
+    "lat": -37.816371,
+    "lng": 145.012307,
+    "signature": "90+ flight"
   },
   {
     "name": "ONA Coffee",
@@ -25,7 +28,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Champion",
     "image": "https://places.googleapis.com/v1/places/ChIJ0Rw8XyND1moRlQ3nyEFLcqk/photos/ATCDNfXGenNKfafkq7Wq2sGitvcePo-af5QGP60Pq9ixk8Ir7JzqmXv1IzieTtjocRBqyH4Ykay0OflPjuX7PTQ9iC61vtOuA5Fr0N7-gV62CW3oIPISuUHgQvbZgSwZSALPM9mHFEJFlTo_kbUiE-I-7IEVvHefUt5oNJXvmz43uj0zLNfGudIduHhAfN8nZ03zQ8SMsH3-vTvHAN1cdM37bd_UdhS9csbOC0G68GlTlBaU8HFEmU4aObQOLcMpe6jSsiTY97qVGRm-JF3EhOx4r2PSzhiIJNQiwbBujatJk6eNJw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 1500
+    "reviews": 1500,
+    "lat": -37.764896,
+    "lng": 144.961662,
+    "signature": "Raspberry Candy"
   },
   {
     "name": "Proud Mary",
@@ -39,7 +45,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Top 100",
     "image": "https://places.googleapis.com/v1/places/ChIJEdoKxOFC1moRZ-K00LuVvyQ/photos/ATCDNfWWK2zLwLFk97UWEflh2IQp4J93vGonjOuI9mfcUnhLJDxzfn5yBeFymxaXEAQ2B1ITsMOHunBNYL80tDjzSxvZUKZSMDiMgajsWiBUPkZDNlAHKDm_-tyCcYZaSst9RpwKMCn2U0bq5WTMFydbWZAhyyQsrAnvaN2dR010gjRfAwPzS_1yrC7fuhEWOxr2SX6Nc_Je6GkNTRXUDICWug16iSZAXkg9ziC5SpRxp5_uXMjYXQULtN7zSG-KV7PkB0awVdOc93Zu53x6vs0nuNJNptTfRKRx3KC_0NeB-Nii3WM1tY-FliyUIntPolVl7cvVlpPkKBd7TbY0sMVsIvyKiLYecaEpA09CE2aEfqj1SAuB08joK-Bf-PKB1PS1Ku45obGAr7FawzOHZRRL-KCN8DLZXXlflSauWvfGgIeq7g/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
-    "reviews": 3500
+    "reviews": 3500,
+    "lat": -37.8023383,
+    "lng": 144.9851717,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "ACOFFEE",
@@ -53,7 +62,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Pure",
     "image": "https://places.googleapis.com/v1/places/ChIJS_hXlNdD1moRqFRuD7C1OvA/photos/ATCDNfXEFq0-Y7Knefr82geRpwJmwcoqhvUSAde3X3_BDi-wHt9gWWSIZBZcJnrnpNTJM3bmCdU79WdLoNNRRUxNNcur_F9iO8CSnUy3ZLdNT4VRyBxuRGcOXYKWwVvga8lALbw8X3Kmv5wC23JVgmBOMZC0mUxdFMJgLniHECzqdyqUeIPe3do9E2niZQeFX3yZ0m3haNY4FRtYQ-ckKxvQzL7t-DaEa90mMQidLWh5N0Wxe1jQnWvln8jRyDbVoZT-zHfI4OLOjKux2aVdVNO3Y6HQfHeC_L5S6hCKtUcASNpozg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 500
+    "reviews": 500,
+    "lat": -37.8132786,
+    "lng": 144.9685245,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "INI Studio",
@@ -67,7 +79,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Minimal",
     "image": "https://places.googleapis.com/v1/places/ChIJIwo0SFFD1moRuilDO0Voe1Y/photos/ATCDNfWnB9KyypmxYFGAEF2Dyggxv_EB0A68fpeRKb695tl24dZ-bkqhuIi9t129qeqj6odm9P62U9SsPlcoX9iTbJ6fJQ7kagixkgTmwEiA87Dn6jQ0u9U4kfe6Henj5dc4Cu7TjLjd4dtqKFfreMR7G4Vo0gp8J-1yGAIJQvO1DbIq1M6zXV_inp19-lIL5vk8D9FzijugxWgbpRFbwPbKFKx3JgGB_pDSgrhhK5eOS5wWKv1wVqTZ3E1NEt9dTD3-P4BmF4kUv4URhuOsyKhUQ7I7DDp719snpd1KD-EEh_6N7pOEGs5dFgjmZSY7enbSm0VgJbNsJ9TWkSLOaosVjsiDGzVwFneAhOVvDnNpSc31i-X-J95Wpb3jhifaZplM5xxCKhNr1c-sZf15WdcZFGVGmJC739XtGyATTPLuhlAnTyZj/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 800
+    "reviews": 800,
+    "lat": -37.8045325,
+    "lng": 144.9612071,
+    "signature": "Citrus Long Black"
   },
   {
     "name": "Market Lane Coffee",
@@ -81,7 +96,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Elegant",
     "image": "https://places.googleapis.com/v1/places/ChIJYQxRN8ZC1moRZPYsVv8YrEQ/photos/ATCDNfUw0h_7aaT5Iruel-RN2yq1Thre7plvaULMb6nAnf00KpJfmnjLxxm9OM57JbV2XcAuDrolaxh_btAsioCIvXqvni6uZ_RvvqzMkIfW4quNOoow3RN87lnteTpNH5yfoWnwPQYpTEBSiI4regFbxuwA79qzlycjABlbfsq8uNFmOMZZKqg8Q-i5jPHrX2Ugv-ww4VLXHupwCPd8xQLtHkgYSzYTM0dO-Ccsj1aWWywk4JOUxHtYz2ZFGzZ4RxIUgwiLNZxeDD5N7GVizFJF2zln2TUTSIXAol60mYK-Iv0mfA/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 1200
+    "reviews": 1200,
+    "lat": -37.8132979,
+    "lng": 144.973372,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Good Measure",
@@ -95,7 +113,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Cafe & Bar",
     "image": "https://places.googleapis.com/v1/places/ChIJBwYNYs5D1moR8N657h-bHVQ/photos/ATCDNfVyQAodMlwvBoxjdG6vlBOM8xSMrrB-bTm-8u6yDSiYhMlqAnpGytmR_W07saXr2fUdYFKRKg9bPJDnAfmXRRjO_JlMIjNAj6lWhzOiAWyeNpQ60C3yqcEqEECkQJMpfnFOKTC_3hiJ4bI4yC3jEd0CgALLw0o2ouzvVCxPna_HhOiX3F7roiANXB-LpYr9KAg6lZCRc6-r39Y3dKFrh2CKC_iIflpLbW9RUBIsUk2JO0UbyZD88CaiyIVhymY6kBTqnUG9CKdI3yfm28ctrl62MdeBr4sYOrTNyMrg9qeNGQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 600
+    "reviews": 600,
+    "lat": -37.8011848,
+    "lng": 144.9666528,
+    "signature": "Mont Blanc"
   },
   {
     "name": "Small Batch Roasting Co.",
@@ -109,7 +130,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Juicy",
     "image": "https://places.googleapis.com/v1/places/ChIJ2zpQRjFd1moRr8ns-bIfQhY/photos/ATCDNfVhvolCIMdNSYlPF2FiJd0VSDhHMkIpn16-qzgNCJuCMvQ_qSYGvMHW_64p0R_6VoHDc6TFDCYtJ8jUQtz48UI4odsfkSn4n70Ehr9xCs9lQP9RU5WXIS8gss4DQGNmWbx6aZx8aUjolnOuBZm9HOSJ-J4jvLuA8bphboseZ6y9mCziW0AHhZyILTBplCfogOJ3rBKEKWq54_iy1Q4465lNZPfYVx0r6c5TGWXseW8pZj-HTfZkE3hsEfD1wy1cZtRCu3rY0GsCYPBibFWd75i9tI8nBplp3382xnuiqie0OLblZhHgQo-qsAXcft3Fem1fFuufhP86ipinLzroQbtFfhhG2hNlztpBQC7T7_LBSvRKALwr8XdlqXB6JnNDdqUhmjdf1iEh7r0GdaCDmL2Yq8LpOLSGZfpWe4zwCbM1ccYW/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 500
+    "reviews": 500,
+    "lat": -37.8043369,
+    "lng": 144.9545001,
+    "signature": "Batch Filter"
   },
   {
     "name": "Vacation Coffee",
@@ -123,7 +147,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Tropical",
     "image": "https://places.googleapis.com/v1/places/ChIJM99O_7dC1moRhpzNrTPwIEU/photos/ATCDNfXobQFOUs1VSu_sUQzDDbR3eH1nI0fDSV0eNXbssAw5cHy_9XQutnsuSLXP26dZwMbvb2GTVzVkajO1ZIaiQbke_9VLYuyipR-LQSpFViFMdrpCNP_kUeEhJqvS6rOa-ppCxQUvLo7OYX9z9fcwojtu-JyjtPwW6ykMYn_6SamUQtngrj6VBxL3Ei_5T7RH_jxtxWu5hZkdVfw67jlHviio9S-WkGu_OpmYN24ewh7v5cMdtYTkXN70NkvBO6fm52izfvVUiiphcCvANmyosEKZIiLdom3_Akze4n5Vij8jCg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 600
+    "reviews": 600,
+    "lat": -37.8158579,
+    "lng": 144.9720281,
+    "signature": "Almond flat white"
   },
   {
     "name": "Seven Seeds",
@@ -137,7 +164,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Standard",
     "image": "https://places.googleapis.com/v1/places/ChIJvdx3kjJd1moRHnjYhByshFo/photos/ATCDNfVA51xFOxj1TK2fRKsXVNBa7RxeGFQkHG6TlM_tluwS3KVxXVJQAW5uE6A0MgDMEE_vN2FQ3B_rhA-7dNDYY-v71J_pi0NJcwzIXuHi_DcpQ_m6e90m3H-HPlAMQozUomsvK0USM6kAKPo75a7vOLsB81PPjxE8p_5N2Ukzfa6Lofl0-jac-7fkDfXrBFHpH4Xq0iUOi6ek_DMqxW-7ay6fNzMXKqKGul0XEDAJFtHE6jxhfNpocuvt_clTojRv5D-OMbqc9ML-_OgLRR4jvYiGp_8bB9psgnRWtye0x3SGiQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
-    "reviews": 5000
+    "reviews": 5000,
+    "lat": -37.8029711,
+    "lng": 144.9590027,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Disciple Roasters",
@@ -151,7 +181,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Unique",
     "image": "https://places.googleapis.com/v1/places/ChIJhdT_nXRp1moRR8ge85Q2-68/photos/ATCDNfX0j49jqVlrEjqETTvMZMogPpDsfs6H7C-O5grQN4cMe7b7JtDz5VNVcaUkxoP6qx7EgJc-pw0enSiNvbia-KXirdL-449jtw0U7G14wSpv14Wsnr0ry3C4GpBxaBydJZa2LIXsKPD-QjsbBbQslL0vhDDcYu9TmainFrUkU73IJEJDjSE3FyW9dNPNe-H5wPe6VvLoG50ZdYhZNP1XR5f881WqV1kRW_ApiAfYD7ud0uqVLfLWATfeRj0h7FrSLJPbmXAP4-Eu--EViuV4iAprVIBUhYDBANzsAOSIuwSltoZQQFXNlXSFJ2y84vL2G_IYCvb1TbK6z2QW22iVjyQzJsR8IzlXvb-N12mYccLw7IHewEWhAYxJyv3deZMIyftu0j-MkAzm2y7FWifT9Cl_MmJf3m2R4aN9kO7CIIAD7g4vfQbjftbQxJF6Lg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.9,
-    "reviews": 200
+    "reviews": 200,
+    "lat": -37.775525,
+    "lng": 144.9601403,
+    "signature": "Black Coffee"
   },
   {
     "name": "Tone Coffee",
@@ -165,7 +198,10 @@
     "tags": "Balance ⭐⭐⭐⭐|Champion",
     "image": "https://places.googleapis.com/v1/places/ChIJI_C2Zedd1moRgs1E_T_P1e4/photos/ATCDNfWGSokg6Ier5v9v1s6TvudnjuDrYyVWMU6yJwL2rheMRT71-ZBO8Hy5eL7XQuQnzjiflmEBgddgYzmFRtIkisRW-3_HhJRDUHSzdgSu43FROFOH5u9QeyPwCjpArOhWuTzfA2kEEatmTMbOU2iA5ZOb4wnOSoSlfjUIT6wZ7hqHCqIIjXfJD-Q1PTvboragP6oXug3mlG-UQaVGM8TrtTF1diHFXtTS6FYsoXw6950em1CFgvD6n7S3wkz0v3rWQTP5E9kupiTZ9cv-ZBc7nGPBZSrbreZyRqJU98j2eR68kbsw04LgoJzH2n4XcpsFCmaUUO4zQ-8MS9tDDlTuxJvxjnsonbKQPe81gn-LRa0-PxaTRYpn1poOYBICPphY82syDT5HiHLB8aJh6wWr3PbNrHChI5eIDRYl02iAwnJE7jE8D-Q2B9CI9COdSaeN/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 300
+    "reviews": 300,
+    "lat": -37.802845,
+    "lng": 144.945725,
+    "signature": "Tiger Bomb"
   },
   {
     "name": "Patricia Coffee Brewers",
@@ -179,7 +215,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Standing Bar",
     "image": "https://places.googleapis.com/v1/places/ChIJn1FUnktd1moRgZCDC6aPCcw/photos/ATCDNfXiG2r9n1ZkwCnVY_jm9SZkSKyHT9jmgdaeLhf2GJbyciJ33yW__v7m11iyoPIxlYOGVDYM9Q1L9DLR-FaZrDSoTmGEHzSy3FWTc5u9F32PmDMVKxKIhOop2qmobKp_H_ZsgbTuoLex00AJk8xx2WMUno9aKOkkv5Y9CDjGOSAMp8-RtB7lyOsHOKGPN8HNisjiFHXSEjN6pFtfhiaCfMTo_vYRClPuQCGPoC66vXEEXxU6TPiknb1qMndZ18YDfv13OXm99Ked4DC2ZhWdgroZZHCUiOZa9hNmtS6B5uQHQjTxcNqeoUuBCub9zb9XIl0WhqZs7BzrF7rtZBjPq_ja_0KKUHnfKWhf4hfvVt-4LX7bhfi_t5fC2A3Pslw9lUWSOZAKxAukQhstrngBjQtn1Zl0gUR84g94DwfXIUVd8A/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 4000
+    "reviews": 4000,
+    "lat": -37.8146934,
+    "lng": 144.9582383,
+    "signature": "Filter Coffee"
   },
   {
     "name": "Bench Coffee Co.",
@@ -193,7 +232,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Clean",
     "image": "https://places.googleapis.com/v1/places/ChIJHZeEMVdD1moROPT4js9HnXw/photos/ATCDNfV4_arI-3iVjREJ93FUXI57BD4goloPCB6nCeUeTpURsvhpb-oNsvAjOp5_QrnC6c3ldC0tsOJZzvufaF6ASG1XO0QJHLWFUmEa2Xp202tF_kHJVLnZ5kGkAUL9ciyBRxeuSVAC72J43uQtEiDrL3zfkDnHPQTPDF_2XQOnECFkRLetCGuUSLzn_nj2ztwsxjFAOH5dZfL12wkV7rT7LsyO1fCpcNJg3Eg4SMnLSC9fVDdqKQln6B3kTkGVW02_WtZy-pfbDXlIoRgAxbougV1tC7yPJiMUH4mLd54OW3mIgQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 1000
+    "reviews": 1000,
+    "lat": -37.8151891,
+    "lng": 144.964186,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Core Roasters",
@@ -207,7 +249,10 @@
     "tags": "Balance ⭐⭐⭐|Ethical",
     "image": "https://places.googleapis.com/v1/places/ChIJQQJ4hk1D1moR9pwI2YtXN2E/photos/ATCDNfXnLU4UWB-WiiM8LajeNdZmlQYZeSEsaBF5SH6Ee69Zx8ZFA9fxxKW31sr_k5gvImo_U88VvCCWInF2KaQW-r4us-mErRDJLIN7f6P9HQ0qoKhMSNFhHamocYroHdz7oqYCNBXHQJhSczBD-AG4-Xmd0BtDnOkqSkj90nd3IDKRknDi9ozio9_qrev2Uw3iExhp1707l3w646BEdSigMGVtsjpgMuuaDHc1ZZ2a9KMFKig7VOR1IVByQQL8-ofc6Gi8ECEXor7ewsvEqnpYCbLD6fslhuSoi5CsgPp3Noo0uj_7nefOXVcT7iwwX4KqZe-SnSQXs_j6bNB7qdzo3xvSUd2QdQIGJlSrLQRZP-i3DnlhZ5EsPgyrTstkRX4x-BAdvX5Q8rXmX14HEOEZdkjkcSdZGN5cmJGNF3Rbu0_GbA/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 300
+    "reviews": 300,
+    "lat": -37.7782319,
+    "lng": 144.9771245,
+    "signature": "Pastries"
   },
   {
     "name": "St Ali",
@@ -221,7 +266,10 @@
     "tags": "Balance ⭐⭐⭐|Hipster",
     "image": "https://places.googleapis.com/v1/places/ChIJJ5bS6P9n1moRx76U3LjtN1A/photos/ATCDNfU-eh5T_nOAExS2IGStXq9cjy7XIGn8X6SwgZ9GGngAoc2_Pg0ZwmXV9_bQEu14iC0g2OQYu1kB__V01xiFxEqDogwOPLjqeJIehJimL3WLWYEVTxvn9EMMsFF_EuO-zARCZP65rRWfjchDpymvGWnzlQUa0S3z7T0CmgOet_LmYDvYKutrbE67_i784FAhya96eNxQOlxRpzFJtX6jyTrKqRFcs5E3o1RxBSF-3I9avDhhBjFy6BXPg9LeWZzBlx55wbsvG_b4vydX3PXEKyJrh5rtk4JNTLyK4ocaycOt3DT6iFrwX6J_diTx78ipYB371yQYARioaf3gOL6HMyu8qSEsmECYIeyH5SdV-X9npUX0TsiGrg-WB66BaYLRyxCp2c_ETNS1NHQ8FJfNoMOtkSUdVqZylf_YnaekJGdx0w/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.1,
-    "reviews": 6000
+    "reviews": 6000,
+    "lat": -37.8312475,
+    "lng": 144.960354,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Axil Coffee Roasters",
@@ -235,7 +283,10 @@
     "tags": "Balance ⭐⭐⭐|Reliable",
     "image": "https://places.googleapis.com/v1/places/ChIJ5bxHSPlD1moRq8xoxVC3llY/photos/ATCDNfWQXWz-ai3NrK4J_eQIS46eSymF3fKGd5Xhp3e9Y1UQjk1t-DtyNlg-MV0iCiFArwE3fXghYYFGft71hkvLBv_DXk1JnUlDXfAOa-HddjdJ85H2qipcvJISfB4I7v8vr0o4UEty0fICjEjd2lZkllIbPZfedlxVsYu8YlZMb06KPo_MCQdsrEWnAvYeMvJwllYcmVd2n23FiOBBOR0lNcA61BD91OsMU3fmpclOKBYSW0GLiRu0zeFRPaxmlpl99EfC33L8aCku7N4xhqOns36IFW4XCiqqMGX60v2AHZe6zvG88v5j_3cAka38-pf82fo1d6Iwqw5AOEBz-bdPUrEWErPXZk42Rn1_ASXNad-wu8amakz9GTbudc48A9CvlckQtcfePDPHO4psCPND2bUzXbIPmnc9DyrH5F6y913uaQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
-    "reviews": 2000
+    "reviews": 2000,
+    "lat": -37.8106637,
+    "lng": 144.9617933,
+    "signature": "Flat White"
   },
   {
     "name": "Code Black Coffee",
@@ -249,7 +300,10 @@
     "tags": "Balance ⭐⭐⭐|Dark Mode",
     "image": "https://places.googleapis.com/v1/places/ChIJbyGMaTpn1moRDl-Dj_Zv_hI/photos/ATCDNfWj-_-sOhJPy7xa58oN56e6FfDTu2DW0Jvlh7I6NxcadnBuFaVcGuPa23JyH_RIR2VZzGVwCc34pEu3VmNnTjF1RbHloyxvNtW2FHYBt1w-jgCJq_HQddbingsvdGNei37Zz-rEt-sq5DDNUvalMroJtM9wjSKEukEgfPtwWaGylCwX0Ir2mNxsnmzgG_laRtFRgkUnBtpB1vU-0sjZ8k_AGtWLJwz3hEXKUD-exuwtjDxSnW8oIRT7ga7bAru6v25Smnfb4aLEd3K3MpJiIq-On6OvlxGhAjPbgF62IEM0vyLFetF4J_kmFUk7wyGhc4GNSS0oAkodz4QY-ANkUcAmycIidBZojueSe5e4058hduo3x7ismQVZxvciphSjchWAtH-VZ9LRrODTIK1egWs9FHmaMH3m7-kG8bkOZpIDqw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.5,
-    "reviews": 1500
+    "reviews": 1500,
+    "lat": -37.8330718,
+    "lng": 144.9567603,
+    "signature": "Espresso with cream"
   },
   {
     "name": "Wide Open Road",
@@ -263,7 +317,10 @@
     "tags": "Balance ⭐⭐⭐|Brunch",
     "image": "https://places.googleapis.com/v1/places/ChIJt_EqLTVD1moRpkK9XYJ9y4A/photos/ATCDNfU07lU3ix3JIV_8neqjidxL5I6yX5n1hiVMq7UjeFMAS8IJqcHLpa97j7W8mWDhgqVQVrF1gPFKXy2eYzRDCATka7Nww2LbmE2JgFVQhDy4gs7AA51sQBEkq3IntJabwqjI-jdJUrpeMnQfIWkc4ldZNb85nXiq_Juo0Qcf34pj1bXoVDreLU2iWq19UdUCt9iMZ6qQEXLb_pDw1Yh_PHJ_NVGQwQn1Cnqx7tbAihpjnuPIcZ7ucA2-EZBo90ygs6KzdBBzYZQSGu1RsR0RTdPbm0BOB8_n8ALQdYNiK22K1Q/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.3,
-    "reviews": 2500
+    "reviews": 2500,
+    "lat": -37.7763047,
+    "lng": 144.9612147,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Industry Beans",
@@ -277,7 +334,10 @@
     "tags": "Balance ⭐⭐⭐|High-Tech",
     "image": "https://places.googleapis.com/v1/places/ChIJgRXO-rRC1moRwcB73rcSyIE/photos/ATCDNfWnksG1MD3ftkYzSRXE5Bxfl-O3AUDoBu0V4IcaolF_pK3HfEONuKtpU0HBM3IbbhtTBWdneWOkxNBY5YEawboI_X39gqDNADLZSkVx2SNJycycMhQiBNp8X7nA_9YhR0eAW-0B3vA9cSALU8l1BlYvxEPm-iy__ta0OqG-D3dvpOtntlSrRst7RPchKzPzHfzTF4x1XdtGls845_x5AuWYdk6pJyLtn_dKaPuUqeIAtjJJlMdWLlcWURaMt9564tFkFUWjFCafTLdXNWZa0VcEgtF1oFc6yW51vmpZBzG2hQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.2,
-    "reviews": 3000
+    "reviews": 3000,
+    "lat": -37.8154635,
+    "lng": 144.963264,
+    "signature": "Fitzroy Ice"
   },
   {
     "name": "Dukes Coffee Roasters",
@@ -291,7 +351,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Organic",
     "image": "https://places.googleapis.com/v1/places/ChIJyaNNI7RC1moRQcMRU8Ucz8o/photos/ATCDNfU5X1tRPgwwxmiB2w5xJKqYKHXk0rlnHU94KD7luVy1OhUJb3mw-EVl-JuCbqd1R4Oy-VeuK1shpq6oMtt6L6ybi59IIGcXpiP-5JjAbrti1oy1qqL3-bRmegs06cbrGnRxd_nhUTFtcT4u5lNiNQNSheuFOrXGGX7VTsVazdQA6yTd57VS-S_Jua4WMnGEsXE9Y1KOqiEn1D4KW43auBmW2k05okPhN6tAFnl8PcdKGN7qiCkzRBURJfc1sKJP3yxN5nGZNcDc5AXAM9jtt7B7Ucf1CaboR-1k6n_MTS2zmw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 4500
+    "reviews": 4500,
+    "lat": -37.816791,
+    "lng": 144.966162,
+    "signature": "Filter Coffee"
   },
   {
     "name": "Rumble Coffee",
@@ -305,7 +368,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Heavy Body",
     "image": "https://places.googleapis.com/v1/places/ChIJ-0_d7Bld1moRAQmEA8DRWV8/photos/ATCDNfWfd91DpZ08N5tezDBKZ8z_S6z9IPsD9z42g-xyGpNcC15d_kC2FvNVoj9_7lUl81yPLdGh21PXoxic38YvC6QMUWPqYfBE1Q3K0eO5zjiKaAKCJzyBx4Fh16KT8iVUqfPNv0BCJ7vl8nou0Rwsj3RsEA5iwAqRbMcwPfXvuVXDJ58U8JK7gKdH2QQIaxlG3DQHxduqW_jJVEhiho4oj7qyj9HdfKAXbzMYOXzyZFN6AeyvyG7enOcDihRtvdGco2sZZAneKTVFPOE0-HR7YSZkPtPP1iqOvEWxP4gWYL6bdw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.9,
-    "reviews": 400
+    "reviews": 400,
+    "lat": -37.7923272,
+    "lng": 144.934491,
+    "signature": "Batch Brew"
   },
   {
     "name": "Padre Coffee",
@@ -319,7 +385,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Sweet",
     "image": "https://places.googleapis.com/v1/places/ChIJYeSX8llD1moReVgb27XXvqY/photos/ATCDNfVewNDta7p_HaS2vsm8hfGXDZ2zOT3wATbfV4pLIHn243mmf64_uIjyrymedJrvzBFY3g8rbgTjGCfeUUSd5uADdhTlWKeD1kGIfvLYMfT3IIt2Dl4HubLzZbdg53_UjrqEoCRRLaiXl-WBJlc4ZdjHBpLv6JOHuvx3ujjVcwNTNZZicsvVYUokClvstn1hWQukKs2SfFfFCpbo2O_Qg1HzI1Plwp0FBjybWfpdKW3Y-G4ZKltNgUdpwyJLNZap68TUvudisR2b9UcHcHWrSbQkLrCib3Edy_Iln5uYWA0qFxPpaQEsz4S99JJ7QjWK38OolsCPMFtuUYvvSkTrbUxNZfPt_0sbkS8kLubkJU34zwxY5d2QDHK94aaTLChKQHYRS8ObRfoI1zyBwuIyuUr2DxLTnHDy4H5DHnHVBcfpiITmk1CTTo_cYjyBqDSf/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.5,
-    "reviews": 1000
+    "reviews": 1000,
+    "lat": -37.8325381,
+    "lng": 144.9563457,
+    "signature": "Magic"
   },
   {
     "name": "Commonfolk Coffee",
@@ -333,7 +402,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Community",
     "image": "https://places.googleapis.com/v1/places/ChIJWQmrSqje1WoRAHdFfPHU3gw/photos/ATCDNfXq0shFNhRhPPjt4iF_XsKWcbQzwPi2Q_4yqRICJQAFbDJ339K6xll9fTFrKUtF2lW3xGCFiaqcJT9AVr_ZUuOitPhuYytY7bXMZvZ0e1Mc8TgJ3Rbfz7Xn1p4nAY4xCNXTVMtD6kZDwat9MX7XEBKowSCrrvT7pcXM282y8cziqsjG2qCME5PTXXloPrTYjFIYwrsebfMBCer2PYA56UAyds6PBHjf3VeV-1j8IqZQIV-mkgnQ7UNCj7m9j8fAwI2zSvqxETYQWHk4FYrnPVMU4vZ1xBfExaRI7z4427w/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 2000
+    "reviews": 2000,
+    "lat": -38.2348961,
+    "lng": 145.0576163,
+    "signature": "Plants Have Feelings"
   },
   {
     "name": "Brother Baba Budan",
@@ -347,7 +419,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Busy",
     "image": "https://places.googleapis.com/v1/places/ChIJ6VLiOLVC1moRUX_Qgb0CEyU/photos/ATCDNfU1ts8pUXe4yjFMu4tDiRQ0gmQFyV2V0rU0F-rZbchdV3aSLH6X3MrwDEOBXQwpsgmAIWyXRLiCS_TOC1lVgTrmqf_1nQ8JRfflFMgWOd3QA0zMwCEm6rqbtLBMDVdC9R8WI3wpynZ14OsWvj6VTWdJA9I314v3i9ijpjAiphgE285XhgX8THIZShEg3-N0dyZjBdaTqr_KTg1ADPUmsZugmEF2ddyRFHHIGc0p1GnJLVKY9d7Ztr0dLmhO8RPe9br0_H7XP5k0a2KUIxhgae3af7eS6xJ5pENengpQn06SMQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 5000
+    "reviews": 5000,
+    "lat": -37.813541,
+    "lng": 144.9620988,
+    "signature": "Iced Latte"
   },
   {
     "name": "Monk Bodhi Dharma",
@@ -361,7 +436,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Vegan Friendly",
     "image": "https://places.googleapis.com/v1/places/ChIJDwqU2kRo1moRZGwNnv7-xPs/photos/ATCDNfVfuZvLY3aZEuI35dfgkMc2SzqGNactjjZQs_ZAKqpUyZQRw6l-0axJCgtuRskERUwB_Vc1uYeN0NLARAAqCALlXvhVmq1565OqfDa_Q9Oxg20IZp7IiXhh9sAB1rGQeA11LWVlIhSKiLP9abMJnHLvJGLV3-wSZMoJ0MflzKZZqoR8cPL8qG_RWp1KVKBA6hJJcjzyTnyXpfM8Yu1cHQcA62zvuCsZChVV3JwHtV5VZGKkjsiMJ16vq4tnB19ZcVvs1j73fZ63Fe_DxoU86Gwk77uxIRu31fJX0TG0kCY7GA/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 1500
+    "reviews": 1500,
+    "lat": -37.8680073,
+    "lng": 144.9908547,
+    "signature": "Chai"
   },
   {
     "name": "Higher Ground",
@@ -375,7 +453,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Grand",
     "image": "https://places.googleapis.com/v1/places/ChIJ-R8fAE9d1moR3yFuI2x1z00/photos/ATCDNfWpC25KGdJwRfzTfGMJSgaNpx1k6tEN2WtiezXiAInEHvCHf8ALieobu9N4CdI2KwlXz4HizNYESAXOA4TYt2UI8oQj63NUoZqKWyWsQxkCsuMqmJiohDXTNs36SQF07OW3RCEDEGw1PfGeKAkDUFv7CmacJKGChjq5eUh7wBMSMH5G3NhX_ofIfVCxpf6BMN0EfcsE2XaGEd5ri0w860FkRb36V60A5HCQoLVHcCf68xv3pnarFiWugk2b7f7HXAUIB2nKkWY5nqg_QGht-S5AP2i0-miks2SeO1HHy5Pxvw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.2,
-    "reviews": 5000
+    "reviews": 5000,
+    "lat": -37.8158034,
+    "lng": 144.9530273,
+    "signature": "Ricotta Hotcakes"
   },
   {
     "name": "Auction Rooms",
@@ -389,7 +470,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Relaxed",
     "image": "https://places.googleapis.com/v1/places/ChIJAYc1Djpd1moRmGwu2RuDrsk/photos/ATCDNfWEYiNg34Y7MUVgCloliokuOCrVQJWBeXfIA_pOJS3uG-cbqoyrhZHJKHlNutL9pt_GkuUvq1O3bhOpHrBPDweAYOALYauFSXlL4yFJigU49u1_troU1vua6ng9jMkAUq_pZ-fbWSO3W-o0fNhBs8t58gcoI6HFq9patMeMoQL9ABu4DMmGQ3hGss6hiD9WpKz_VgiDvRtogr_HVQHVutosofIpWuPTQ_TFGOc6SYk4TSaeW53Z7oOzdJcwLyzFsAk-BuDBDWd-_gle4NQL5crqANOUE3dCD1izEmmhV9qA-t9FH-EVTfySpEVyCrLG3YTzyYMOwizXKWRbOB2eIs5Hv52Zfc2dPjq6dg7gX33oy7-IgX8NTHgu-uG-8Kq8wIKOiBX3fNMRbTVlKWcigek1Hc8Szcn7bpLuf32lxyNfqqTd/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
-    "reviews": 4000
+    "reviews": 4000,
+    "lat": -37.8025013,
+    "lng": 144.9494883,
+    "signature": "Rhubarb French Toast"
   },
   {
     "name": "The Kettle Black",
@@ -403,7 +487,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Elegant",
     "image": "https://places.googleapis.com/v1/places/ChIJrVqwpwJo1moRJ5oA8Rm_SBY/photos/ATCDNfVRs6v2htq1y9a9JxIEO9QN1rbEY-CHBe4ppd-YJpw3e1jWdu5S6AZs9DCEaL6LD961FlYSdOlApx1QMki1SCQ6qmfAcBiMGZD_p-tqbAJgcTVFLgZaPz1d8UA8-Hqmn2j03C9f__MniLRJvt07ylOxg6BO7YW0WFiwoxogMxXc1oecCNHdaqs5i55Uz6-Jo3AX0jf_UiULquDcpl7XlQlu6N1AoHP7e-nCB6JMR4qZJTDJV9oMFSTPtATfPZOy57eoYUytVH_N1CFgki0r9nX0DdCr1ay2iVMiav7KHyW10A/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.3,
-    "reviews": 4000
+    "reviews": 4000,
+    "lat": -37.8340784,
+    "lng": 144.9713383,
+    "signature": "Coffee"
   },
   {
     "name": "Little Rogue.",
@@ -417,7 +504,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Unique",
     "image": "https://places.googleapis.com/v1/places/ChIJFydOVspC1moRMHTFc063-pU/photos/ATCDNfXMon1cHcjXgxca-M1Q_c9fohopO8WACMyD9v-OWNuDrNOq69SDheQ8CZzglr0KQkoQnwCdAnZDBY3jZW_YgZVrv5p-mJyMrPILZner2BoNU23M6yNLarlWKHz98ok6bm-RUfrKrqYwRIZ_h8drV6RA-3B_TELPDBiJ7xtWqEATxtZClZ-bfBwo5_JmSrgVLInLkCwpaEJvo6249sXIjCkHeX9X1lU8GZAUsz7WKJxSyhTPFtsxYUrxAWI6Bfe3-2V7_4d-BKuUrXB8gO1yaKWeCuNybiwAV-5Ri1WlPVNY3P95sGR2UsDzNSK1MRnczBQ5HeOgnfullxq_fzXSRvd1WPW54NhxFulFuv_gyfQmALAHJFnCMMRyE3Pl0j-Ei2vTbfhsv-6DRGN8I6ZkxBR4Qw3kOBjDWpECy7Lmu6CMAaY/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 1784
+    "reviews": 1784,
+    "lat": -37.810993,
+    "lng": 144.964066,
+    "signature": "Matcha Latte"
   },
   {
     "name": "Project Zero Coffee Meriton Suites",
@@ -431,7 +521,10 @@
     "tags": "Acidity ⭐⭐⭐⭐⭐|Fruity",
     "image": "https://places.googleapis.com/v1/places/ChIJidh4n8hd1moRqRURdejMMCM/photos/ATCDNfWmj6JzWcvTfmYScXWcZbEgzBCYj1ff7sP5mdTXPRxH9lNxRi-G-gPAWDAlZ_tcUPISou7x02zSZnH3Ene4s_FXHSjwDTKWuvuSeMgLGpgCV2xYCg7PgZBN83dqe_MPniEuokENMVptRishMul-EOyjB6Mg4bZ9H6jY_EbJ8Eg6pBvXdfk36RQq5EhdGSzrmjs3jgC4_l2lF9rqgjYWy1wjpm2M_xGgS74du9t0b-Ags0VAFCBmfgrN9rvPxYPPDVRkRNVn39xal_C6kLfdXQCQiVQ3fVGgxCt8pr2x9MPThbf9yXSJoE6oIjQaRWb3w9na8yVnpioMiIeZaqRYFM_W3hDE8GujQ3WVuEHy25OFHJ86gHb1ALdVtgh1GoeGZwalgT00FV-v4bvcbfNH4tb7CnNf_3LJY6Klxxnntlb4H5zz/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 425
+    "reviews": 425,
+    "lat": -37.81688,
+    "lng": 144.9561555,
+    "signature": "Strawberry cheesecake coffee"
   },
   {
     "name": "Palace Coffee",
@@ -445,7 +538,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Hidden Gem",
     "image": "https://places.googleapis.com/v1/places/ChIJsTY_4FVD1moR5zwS4X5WyQo/photos/ATCDNfUPjX-6tmotQiMIvDx1iCqTQAikAd3Vfl4TGuxuwHsWxPAI1Zjil6ghNK2Q7M96h9LsbrfjmDWTcyXt8zWm0IkCs6ZHW1vyUJtO4XDqupmzyvQ75mbhsx7fEXDX2huzncp9ft1xwomYvA45gu3esBFzN1sX-dqEy0JlH3Fnv7mAtDIqUxxGUoXNu5j7GYnAcpQkzKsJK2pGpwgr6HswiR-x95eXircE2ssgcpx6xp9jpV4I8B2FiNlBoW8PuVOZs2XgzMYsVL3vfTr3s0GbmZbUS73v9kU8_5a0CZmTnglk8zU8lyGmhCcC0BKAXNXlX98oLRfS1UI0nw1qy_c33OPN-IptLP42I35fFkWryH7eFhjtyIKnA2zw6OS4B82UGcpeV9NXbcl71s7bD69Jj_dHUJwavXKPAsPdSfVnIK_8tVcVJ8HVLE2cVxcgLSCv/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.9,
-    "reviews": 138
+    "reviews": 138,
+    "lat": -37.8129368,
+    "lng": 144.9724716,
+    "signature": "Cinnamon bun"
   },
   {
     "name": "Overlay Coffee",
@@ -459,7 +555,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Signature",
     "image": "https://places.googleapis.com/v1/places/ChIJ25x2xuFd1moRVl-vqCL_ZGo/photos/ATCDNfUkHMAw9aRp_b5DwOJcisFZRPcAHM64Fwi82iy1ICO8gVmc_-nNbZvhSSFY0MjUx17NBG_FURo77_rVWGX9-pPr1xQY3CBb0WFV0qkhT_xg95gXtleRFCMWFMUvlB7QwVjzhWzMdjQMnWvSnyLRkoaqwqG8DBe0B0IOG6qMGpLyq5OBKkq3y_dmwL-C2uhx0Lnlbzven6wfxw3lqJZT1yR0BqpbHSWJ6mArHPoQ0GErrwQ6llazdrPBF_j8kVx70s1j5LFWl0G0ykpI1ar61FN6w9922VShYQ3OXEzvopcjcw/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.5,
-    "reviews": 576
+    "reviews": 576,
+    "lat": -37.8115782,
+    "lng": 144.9602798,
+    "signature": "Peanut Butter Latte"
   },
   {
     "name": "The League of Honest Coffee",
@@ -473,7 +572,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Signature",
     "image": "https://places.googleapis.com/v1/places/ChIJ71r4xc5C1moRVjrA0cOSPuA/photos/ATCDNfVSEg7yzS-6v16ZTZ6jc7T3teCsbDQVTIF33L3DRNvd3zFI009GL026cHwa5o1Lnbm49OtXPyASiEFkWyCASd77XR9EH7Q5JBNkqWP7tGCwLKJR7A-Lt7prS1LD8YUKbv_nttbiCbKDnKoEdedOh2XKWF4H6yMF-ZIR3PSmaMfNKwpnEYSOVW-ZcgxFLlamfGw5D-O_DSkRRKPRIicM4OVXnXYl_DuIJyJTfFrCrfRpf6H3oxOAWp_Tdlqh-aBR1g3ozHQUmBx_hVY2Pukhzk1VO1RQKhRd3V5aVqSZz3AJKg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.5,
-    "reviews": 891
+    "reviews": 891,
+    "lat": -37.8092401,
+    "lng": 144.9684912,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Otherside Coffee",
@@ -487,7 +589,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Unique",
     "image": "https://places.googleapis.com/v1/places/ChIJe8M9elxD1moRschc9BopmmY/photos/ATCDNfX-vt94zOi4yf8kkbF7EUpxahZtweb_SFTThj1L1zky-Zps6OG-dVnB-U6VGROCMrJZYTdx_RQKTdRpCgrxCHLDSpSRDR0lRO0ayQRHrcfmfluvvIpYKcnWR8AgdNZFcU541ZPO0lsdIVXtQ-nP6-xu7skNsCh_05kuZQ9Ntg04MRabOYsgPVpOhMDgVCbZEXJWqqvWfyLSaus-H79S8HnxS_u_DJcYnsmcZS0cNSRLGRT-DneN4j1Mne0aNR2mTkHYdqnKbhr-QMWou3KL0u5c8UaF-Gt_BklIONJqO3mh9A/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 560
+    "reviews": 560,
+    "lat": -37.8139653,
+    "lng": 144.9676798,
+    "signature": "Almond Flat White"
   },
   {
     "name": "Spyglass Coffee",
@@ -501,7 +606,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Comfort",
     "image": "https://places.googleapis.com/v1/places/ChIJOfotPd1D1moRKBrT3Juq8fQ/photos/ATCDNfXsojT8G0Qtqj0BIED8mKM0PC5HkJTxJ1Ke0XQ2_6yq-nRYeh7d5h8OKMS5-UPkqqbkherIuD8101ptbyPW6fV5Mw3Q0o5y92QZ5JBWNJQuFyJeuamVA6Kqw1aov47lPpqjldcenIEDIEuMBAnBomTmO_zK0Zq32-2JAdZy9Ce2lvrxng3a615EkRi2MYLoLBytVUCip618WyShZl_KiaPXqAdBHMPZ3Zkcar3WojCOp1HWAN-kyxnJcDkqZM07-xFKBoc7pIgH6XxYLtJFe-Fv6W2T68m9w5nl7EfEH6chUQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 70
+    "reviews": 70,
+    "lat": -37.8179319,
+    "lng": 144.9624049,
+    "signature": "Porchetta focaccia"
   },
   {
     "name": "Traveller Coffee",
@@ -515,7 +623,10 @@
     "tags": "Nutty ⭐⭐⭐⭐⭐|Hidden Gem",
     "image": "https://places.googleapis.com/v1/places/ChIJcRZauchC1moRSvqNA1_Mgwk/photos/ATCDNfWp8ahvVjLUaUXrpelFa01TcXleQlfLJ0i6oS1Nvc0kuxYX8xTb3v-VS7GpwWoAMeCEB5otM00nzD5c9xTMELlmZ7eQ3tHlAnsn6Nq5F1jeggFfb-tUgpuoHw0d6OJ-w0azFmomWBFbUaKsYPhnj_cBAMDnI0z7a3BUiZQnkL3FsJOEIZdUTsc0fPbOsjnRob6QFShzhRqoR03ZY-hHNr_Y36HusDGMVunqMD4urbtjfoUzKKz9Uv7rlWSJwd9LMvRBCnR0kp1H5jU_C7PCQRKRc0Hedr8CWonZgOKxs7dyccT3AKd1C14iPMG7NUoja9JWpZ5PMGuO-1sBnBpxv7a_einCR_shGETO87ViaqfP89TB5dYUWzvT4obYf9V7oYKU0yR27mZWcVh9zD-uS8SCmk5gasbm5EuKOEebL0_P6A/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 348
+    "reviews": 348,
+    "lat": -37.8115346,
+    "lng": 144.9712022,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Flinch Coffee & Play Lt Lonsdale",
@@ -529,7 +640,10 @@
     "tags": "Balance ⭐⭐⭐|Creative",
     "image": "https://places.googleapis.com/v1/places/ChIJrVit8rdD1moRpSnQUtmiC8k/photos/ATCDNfXux8mh3OyYnkXwCW_O9VR9TPq7mG0Omj7gziSnUhIHY74Km9mvPO4R8P_bpW8QAJYTqRxVGzl2EV1-9fm1YXdLxNJNyLR_k4Q3LQEtBOfDa5cOjdSk3ZqxegueaXOpRV8oW8I3XHf0_7jKR4f_ZksaqrvgNUDiJnTmJt2Hmg0EUQfhU3dwEsFOLO3Wt7ay6pJ5G3SRJRyZWJNlGHiiqfjqqKb7f7H3U0bTcVW_l7CpF-o8QlsxwhFTQd2gXen3cBwjDh9_BJUe4RjZfwytprW0BNSOTWie5gcqIn5Ma1ZEow/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.9,
-    "reviews": 230
+    "reviews": 230,
+    "lat": -37.8085362,
+    "lng": 144.9709184,
+    "signature": "Matcha white chocolate"
   },
   {
     "name": "Plus Coffee & Co",
@@ -543,7 +657,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Value",
     "image": "https://places.googleapis.com/v1/places/ChIJFfuagElD1moRfHn5PWOZDqE/photos/ATCDNfXhd0qVYniG87QmTMsrDF2Mmm2BdjI11cC5fSiCjmlKsQUAKRr1VSn5VveIjf_LcRkZlicrqah90esprrO4zqnedsfE-1WBDZknTFW_waiHpdlTxJQYxhI3vWTHJ6uTchnS0pfTajhwatWYRNo3TQQ69tGAP5jI0cO_D8hLmoMg9RWA1sroLWEk7hUG_WdQ5oVRyYP_93wuRUEZhuk6fHXxXxy3nIY4OwU09yQ3sjtA1zLLBdHjZCEs44PneRH3Cwqyl94djXqx3SlDPyfaF6dEmQd6YmCuzFH2uPG_xPYKcQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 336
+    "reviews": 336,
+    "lat": -37.8171645,
+    "lng": 144.9648549,
+    "signature": "Matcha"
   },
   {
     "name": "Fabian",
@@ -557,7 +674,10 @@
     "tags": "Acidity ⭐⭐⭐⭐|Local Gem",
     "image": "https://places.googleapis.com/v1/places/ChIJV-QuWspC1moR8QfbCRMzkNo/photos/ATCDNfXg8KqpvubVQHyKX5twNA9-4w6xuBhxWnmaX8ZK7zR6Qh_TbVOEbqb4f8dTqW96boggKSBCEhhwyQ8Khc1CF-qi0D_wZvaAsSuFbP2ku1aRYWo9MjsuUqlxFSG-B4vr39UyrEtKicAeUHGWff3BewPn7NSvmUEuy6ygV1981GlVXHWp1TrfmqP3IACdXJFBAL_DYdnjlfusFhnXmtzpt92d_F74miOrPF3RrVNHaRuY-nZv5L1EyLCW1XFnO30_QCgOCt1TjHUd3Azv0ttxPEPurpT1X8Irx6Z_dLdQWY_Fig/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.6,
-    "reviews": 409
+    "reviews": 409,
+    "lat": -37.8115126,
+    "lng": 144.9643699,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Little Tommy Tucker",
@@ -571,7 +691,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Brunch Spot",
     "image": "https://places.googleapis.com/v1/places/ChIJj9PvtURp1moRSAptDMbULsY/photos/ATCDNfVNyGTFFBVeRbDwnnOWL50qfikyJKw8mO2AHqlt7OpC4EEGRcpeQYqst8n-X843giuEA3Co3133sQrY8rejBbtUmMNqpRIFrPuSN0vXX8s_QmHNXwfCF1sLzWcF4kUDOo_MmBz2fqacu_l1Zbmzs_8-mM8UnoXRDDqHbyX-lYxyY4bcNTI-OCLQ58zWpYVIpiR9O0SvRBgfr0R-lXlmLO1TJYvcNqL46fIRgoYEYciIARKi4D84xY9ZxglnYKHU1PLRYhzQ05lc2SYzY6JKD1CUt_Ow7twGsvNHObjAE06JzQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
-    "reviews": 748
+    "reviews": 748,
+    "lat": -37.918436,
+    "lng": 145.0380489,
+    "signature": "Eggs Benedict"
   },
   {
     "name": "Fieldwork Coffee",
@@ -585,7 +708,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Local Gem",
     "image": "https://places.googleapis.com/v1/places/ChIJWR4AJIpD1moRqnRC9abE3To/photos/ATCDNfVOcz6hip6e5wIN4xFSHszL1LplQaskdvJJ21KRZHv7mbHtKuw_fmoM4qznsI4JgIaSO_rgG29AoGH2I38hsgDU1snVj_sj91tE5FuDJRPr8unBSA4T5opjmeaq_OfsdxLoiM-rKi6weaTc0KcSAkazzh8D-96b3mLnmvd25OruIKzxeE0g26NoGx0PHrniw8iv73ZELkeSenRW01SMVPffxuQ_mo2ot98knzo2wehF3qyA8W5kuRV8xUyyIvnwkGuD7Ff_MMPbJmbzdSB6xnFAjhdvtzlh1HkpEO4Ap-2ztiixK65993hTVsopnFX09TLIDC_gQq1Ff5Lmvc9h6iHBPiJWP0M_jaerQ03_qL1nWJef6natWLvQ1hAdZ0p73NmIMp-PSnjZmhAFyDZNNqN7BnRSzDJro-3r2_ZW3iI8r3ow/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 78
+    "reviews": 78,
+    "lat": -37.8175798,
+    "lng": 144.9658243,
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Moment Coffee",
@@ -599,7 +725,10 @@
     "tags": "Balance ⭐⭐⭐⭐⭐|Serene",
     "image": "https://places.googleapis.com/v1/places/ChIJbUz0Quxd1moRt7fF2vJszFw/photos/ATCDNfU892Mhz8htNkW_68LhVW3GzmOcMIjCt-ZEUcKxJl4sWFDxSJlYNBF7c2hYK6Qfr-igfQsNbTdNE9gDmmalX3-WZoWrUN8aTgTV7Rxww8T6WcqOjylvzUQbDKMlvg79pQKmr6M1VPETigzIpvHMvaQYuwb7X-ts7VK_sgGpTADxgoekVukuHsKLZMyZHEM1mNFgnzte_EfZOVjQN38m1-kIPZDyG80DkAyw6oEy9XQXZn4Ly5Z9NSLINU_skDO9fobSdOvyeI02xTSoUXraB9fI6mA24N-lS3jA3YH5s_5v5w/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 106
+    "reviews": 106,
+    "lat": -37.8122683,
+    "lng": 144.9582693,
+    "signature": "Japanese Matcha"
   },
   {
     "name": "Bearded Brothers Espresso - Coffee",
@@ -613,7 +742,10 @@
     "tags": "Nutty ⭐⭐⭐⭐|Local Favorite",
     "image": "https://places.googleapis.com/v1/places/ChIJUwF5_rRC1moRhcYk_DNGgDY/photos/ATCDNfUeR41Mzm0-P1kRZxsyWYjSZ8PDcleNwvb3S342sJ7o7YeXWkRF2ilQVGmQMxk2zVNdfIFmW4UugSN3K8eilZUpgJe-7YVcTHOFmgIyq7zchghSTbixIzE8Pj8fUvZpMYoNTlIEy_FeqK4Acsf7pev_9UG-lSY_E9We-DSkgqX2X47nUc5FlwH38oSNa-7RF7EX6jCA61fXIBZmcyaGt-50AZw-45RPoAKLFVLpHBIFIPvoi7tna1nDvhM2qH1dzDnQTlIn-q0GyQY9mJWNzoEbzm823rVImFNCYj7iQSIh-VyuuBWR8nakPgttZ_1wZftI8-YHkEjV3Ua1_2-inA1x1MRKST6BAsEmsE4c8ezxCqi6aCk7Qz8EE5pRrtfzJpUcF4o_pPftdbsgt5XZulwOQKMOMaiBtonl3bgEQFCFrg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.8,
-    "reviews": 202
+    "reviews": 202,
+    "lat": -37.8152547,
+    "lng": 144.9633138,
+    "signature": "Mocha"
   },
   {
     "name": "Cafe Tomi",
@@ -627,6 +759,9 @@
     "tags": "Nutty ⭐⭐⭐⭐|Jazz",
     "image": "https://places.googleapis.com/v1/places/ChIJrzIaCjVd1moRNxrvrFcIpqs/photos/ATCDNfUJgngd_KNyBtJYKOrJITEeX7kRJQF8QRNbJunJvwq86pWMd427h9jclTIo1kAxYVQ4LhqHQXSwurL8OkiOG0w7jrmYI6TISkJ7giHhDTFqf6YE7C_LMLt2O8ex2PRoSZC1P1O9gz0_L2FqKC0c32o782ScIIw7DWrdrietfs4tqtvq2tbNS1OKAGonkyiLIK2Cvvo43bvE1JkY5WR8qk4-T-deickME3NYvyMT73HKHNyvd4sUZjHnlvkv172rAx1apBmSKBTtnmOLk25_-zRxYFSWvcDpAvFjvqpyCXXDUMkLsp6t-94Yamuztk_kpmN2f8-tkq1I8mcy0z4PoGt6R-m9meWQ6RYr9X6CmUnv8kBLO1MaWB0gwEFTq2Ds_BCb67vzwzHjTAVIk9N2LOYm8y3XccHiOtYtvopCoDtAVmWPuEXyT4I73jOxHmCH/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.7,
-    "reviews": 179
+    "reviews": 179,
+    "lat": -37.8006736,
+    "lng": 144.9533171,
+    "signature": "Hot choc-berry"
   }
 ]

@@ -11,6 +11,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet">
+    
+    <!-- Leaflet CSS & JS for Maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
 
 <body>
@@ -69,6 +73,11 @@
 
         <section id="results-section" class="results hidden">
             <h2>추천 카페 리스트</h2>
+            
+            <div class="map-container">
+                <div id="cafe-map"></div>
+            </div>
+
             <div id="results-container" class="cards-grid">
                 <!-- Cards will be injected here via JS -->
             </div>

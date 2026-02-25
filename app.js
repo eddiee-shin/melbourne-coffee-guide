@@ -40,6 +40,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initial call
     updateSliderLabel(slider.value);
 
+    let map = null;
+    let markersLayer = null;
+
+    function initMap() {
+        if (!map) {
+            // Center on Melbourne CBD roughly
+            map = L.map('cafe-map').setView([-37.8136, 144.9631], 13);
+
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                subdomains: 'abcd',
+                maxZoom: 20
+            }).addTo(map);
+
+            markersLayer = L.featureGroup().addTo(map);
+        }
+    }
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -48,7 +66,21 @@ document.addEventListener('DOMContentLoaded', async () => {
         const location = document.getElementById('location').value;
 
         let suggestions = coffeeShops.filter(shop => {
-            if (location !== 'any' && shop.location !== location) return false;
+            if (location !== 'any') {
+                const sub = shop.suburb || "";
+                if (location === 'CBD' && !(sub.includes('CBD') || sub.includes('Melbourne') && !sub.includes('South') && !sub.includes('North'))) return false;
+                if (location === 'Fitzroy/Collingwood' && !(sub.includes('Fitzroy') || sub.includes('Collingwood'))) return false;
+                if (location === 'Brunswick' && !sub.includes('Brunswick')) return false;
+                if (location === 'South Melbourne' && !sub.includes('South Melbourne')) return false;
+                if (location === 'North Melbourne' && !sub.includes('North Melbourne')) return false;
+                if (location === 'Others') {
+                    if (['CBD', 'Fitzroy', 'Collingwood', 'Brunswick', 'South Melbourne', 'North Melbourne'].some(l => sub.includes(l))) {
+                        // If it includes 'Melbourne' but not South or North, it's CBD
+                        if (sub.includes('Melbourne') && !sub.includes('South') && !sub.includes('North')) return false;
+                        if (!sub.includes('Melbourne')) return false;
+                    }
+                }
+            }
             if (atmosphere !== 'any' && !shop.atmosphere.includes(atmosphere)) return false;
             return true;
         });
@@ -56,9 +88,57 @@ document.addEventListener('DOMContentLoaded', async () => {
         suggestions.sort((a, b) => Math.abs(a.spectrum - tastePref) - Math.abs(b.spectrum - tastePref));
 
         renderResults(suggestions);
+        updateMap(suggestions);
+
         resultsSection.classList.remove('hidden');
         resultsSection.scrollIntoView({ behavior: 'smooth' });
+
+        // Ensure map resizes correctly after becoming visible
+        setTimeout(() => {
+            if (map) {
+                map.invalidateSize();
+                if (markersLayer && Object.keys(markersLayer._layers).length > 0) {
+                    map.fitBounds(markersLayer.getBounds(), { padding: [30, 30] });
+                }
+            }
+        }, 100);
     });
+
+    function updateMap(shops) {
+        initMap();
+        markersLayer.clearLayers();
+
+        let hasValidCoords = false;
+
+        shops.forEach(shop => {
+            if (shop.lat && shop.lng) {
+                hasValidCoords = true;
+                const overrides = (() => {
+                    try {
+                        const data = JSON.parse(localStorage.getItem('coffeeGuideOverrides')) || {};
+                        return data[shop.name] || {};
+                    } catch { return {}; }
+                })();
+                const displayImage = overrides.image || shop.image;
+
+                const popupContent = `
+                    <div class="popup-cafe-name">${shop.name}</div>
+                    <div class="popup-suburb">📍 ${shop.suburb}</div>
+                    ${shop.signature ? `<div class="popup-signature">👑 시그니쳐 메뉴: ${shop.signature}</div>` : ''}
+                    <img class="popup-cafe-image" src="${displayImage}" alt="${shop.name}" onerror="this.style.display='none'">
+                `;
+
+                L.marker([shop.lat, shop.lng])
+                    .bindPopup(popupContent)
+                    .addTo(markersLayer);
+            }
+        });
+
+        if (hasValidCoords) {
+            // Adjust map view to fit all markers with some padding
+            map.fitBounds(markersLayer.getBounds(), { padding: [30, 30] });
+        }
+    }
 
     function renderResults(shops) {
         resultsContainer.innerHTML = '';
@@ -109,6 +189,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="card-body">
                     <div class="shop-location">📍 ${shop.suburb}</div>
                     <div class="shop-tags">${tagsHtml}</div>
+                    ${shop.signature ? `<div class="shop-signature">👑 <span>시그니쳐 메뉴:</span> ${shop.signature}</div>` : ''}
                     <p class="shop-desc">${shop.desc}</p>
                     <div class="one-liner">"${displayOneLiner}"</div>
                 </div>

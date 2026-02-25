@@ -46,7 +46,7 @@ def search_cafes(query):
     headers = {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": PLACES_API_KEY,
-        "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.reviews,places.photos,places.addressComponents"
+        "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.reviews,places.photos,places.addressComponents,places.location"
     }
     payload = {
         "textQuery": query,
@@ -97,6 +97,11 @@ def search_cafes(query):
         if not suburb:
             suburb = place.get("formattedAddress", "").split(",")[0].split(" ")[-1] if "," in place.get("formattedAddress", "") else "Melbourne"
 
+        # Extract Location
+        location = place.get("location", {})
+        lat = location.get("latitude")
+        lng = location.get("longitude")
+
         user_rating_count = place.get("userRatingCount", 0)
         if user_rating_count < 50:
             print(f"  -> Skipping '{name}' (Low review count: {user_rating_count})")
@@ -110,6 +115,8 @@ def search_cafes(query):
             "name": name,
             "address": place.get("formattedAddress", ""),
             "suburb": suburb,
+            "lat": lat,
+            "lng": lng,
             "rating": place.get("rating", 0),
             "reviews": user_rating_count,
             "review_texts": review_texts,
@@ -146,6 +153,7 @@ def analyze_cafe_with_ai(cafe_data, existing_names):
     - "atmosphere": Array of 1 to 2 strings from this list exactly: ["modern", "cozy", "unique", "lively"]
     - "desc": A 1-2 sentence description in Korean about the vibe and coffee taste.
     - "oneLiner": A catchy, short one-liner in Korean (subtitle style).
+    - "signature": A short string (1-3 words in Korean or English) representing the cafe's signature coffee, drink, or popular menu item based on the reviews, e.g., "Magic", "Raspberry Candy Filter", "라떼", "필터 커피". If unclear, return "스페셜티 커피".
     - "tags": Array of 2 strings. The 1st string MUST be exactly one of: ["Acidity ⭐⭐⭐⭐⭐", "Acidity ⭐⭐⭐⭐", "Balance ⭐⭐⭐⭐⭐", "Balance ⭐⭐⭐", "Nutty ⭐⭐⭐⭐⭐", "Nutty ⭐⭐⭐⭐"] matching the spectrum. The 2nd string is a short English catchy word (e.g. "Signature", "Hipster").
     
     Return ONLY JSON.
@@ -179,7 +187,10 @@ def analyze_cafe_with_ai(cafe_data, existing_names):
             "tags": result.get("tags", []),
             "image": build_photo_url(cafe_data["photo_reference"]),  # Hotlink URL mapped directly
             "rating": cafe_data["rating"],
-            "reviews": cafe_data["reviews"]
+            "reviews": cafe_data["reviews"],
+            "lat": cafe_data.get("lat", ""),
+            "lng": cafe_data.get("lng", ""),
+            "signature": result.get("signature", "스페셜티 커피")
         }
         return merged
     except Exception as e:
@@ -199,7 +210,10 @@ def append_to_sheet(sheet, cafe_json):
         "|".join(cafe_json.get('tags', [])),
         cafe_json.get('image', ''),
         cafe_json.get('rating', 0),
-        cafe_json.get('reviews', 0)
+        cafe_json.get('reviews', 0),
+        cafe_json.get('lat', ''),
+        cafe_json.get('lng', ''),
+        cafe_json.get('signature', '스페셜티 커피')
     ]
     try:
         sheet.append_row(row)

@@ -44,7 +44,7 @@
   {
     "name": "ACOFFEE",
     "location": "Fitzroy/Collingwood",
-    "suburb": "Collingwood",
+    "suburb": "CBD",
     "spectrum": 1,
     "price": 4,
     "atmosphere": "modern|unique",
@@ -58,7 +58,7 @@
   {
     "name": "INI Studio",
     "location": "Fitzroy/Collingwood",
-    "suburb": "Carlton/Collingwood",
+    "suburb": "Carlton",
     "spectrum": 1,
     "price": 3,
     "atmosphere": "modern|unique",
@@ -72,7 +72,7 @@
   {
     "name": "Market Lane Coffee",
     "location": "CBD",
-    "suburb": "CBD / Market",
+    "suburb": "CBD",
     "spectrum": 2,
     "price": 4,
     "atmosphere": "lively|cozy",
@@ -86,7 +86,7 @@
   {
     "name": "Good Measure",
     "location": "Others",
-    "suburb": "Carlton (Lygon St)",
+    "suburb": "Carlton",
     "spectrum": 2,
     "price": 3,
     "atmosphere": "cozy|lively",
@@ -226,7 +226,7 @@
   {
     "name": "Axil Coffee Roasters",
     "location": "CBD",
-    "suburb": "CBD / Multiple",
+    "suburb": "CBD",
     "spectrum": 3,
     "price": 3,
     "atmosphere": "modern|lively",
@@ -240,7 +240,7 @@
   {
     "name": "Code Black Coffee",
     "location": "Brunswick",
-    "suburb": "Brunswick",
+    "suburb": "South Melbourne",
     "spectrum": 3,
     "price": 3,
     "atmosphere": "modern|unique",
@@ -268,7 +268,7 @@
   {
     "name": "Industry Beans",
     "location": "Fitzroy/Collingwood",
-    "suburb": "Fitzroy",
+    "suburb": "CBD",
     "spectrum": 3,
     "price": 4,
     "atmosphere": "modern|lively",
@@ -310,7 +310,7 @@
   {
     "name": "Padre Coffee",
     "location": "Brunswick",
-    "suburb": "Brunswick East",
+    "suburb": "South Melbourne",
     "spectrum": 5,
     "price": 3,
     "atmosphere": "cozy",
@@ -324,7 +324,7 @@
   {
     "name": "Commonfolk Coffee",
     "location": "Others",
-    "suburb": "Frankston",
+    "suburb": "Mornington",
     "spectrum": 5,
     "price": 3,
     "atmosphere": "lively|cozy",
@@ -520,7 +520,7 @@
   {
     "name": "Flinch Coffee & Play Lt Lonsdale",
     "location": "CBD",
-    "suburb": "St",
+    "suburb": "CBD",
     "spectrum": 3,
     "price": 2,
     "atmosphere": "unique|cozy",
@@ -534,7 +534,7 @@
   {
     "name": "Plus Coffee & Co",
     "location": "CBD",
-    "suburb": "Ln",
+    "suburb": "CBD",
     "spectrum": 3,
     "price": 1,
     "atmosphere": "cozy",
@@ -546,9 +546,9 @@
     "reviews": 336
   },
   {
-    "name": "파비안",
+    "name": "Fabian",
     "location": "CBD",
-    "suburb": "St",
+    "suburb": "CBD",
     "spectrum": 2,
     "price": 3,
     "atmosphere": "cozy",
@@ -562,7 +562,7 @@
   {
     "name": "Little Tommy Tucker",
     "location": "Others",
-    "suburb": "Rd",
+    "suburb": "Bentleigh",
     "spectrum": 4,
     "price": 4,
     "atmosphere": "cozy",
@@ -572,5 +572,61 @@
     "image": "https://places.googleapis.com/v1/places/ChIJj9PvtURp1moRSAptDMbULsY/photos/ATCDNfVNyGTFFBVeRbDwnnOWL50qfikyJKw8mO2AHqlt7OpC4EEGRcpeQYqst8n-X843giuEA3Co3133sQrY8rejBbtUmMNqpRIFrPuSN0vXX8s_QmHNXwfCF1sLzWcF4kUDOo_MmBz2fqacu_l1Zbmzs_8-mM8UnoXRDDqHbyX-lYxyY4bcNTI-OCLQ58zWpYVIpiR9O0SvRBgfr0R-lXlmLO1TJYvcNqL46fIRgoYEYciIARKi4D84xY9ZxglnYKHU1PLRYhzQ05lc2SYzY6JKD1CUt_Ow7twGsvNHObjAE06JzQ/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
     "rating": 4.4,
     "reviews": 748
+  },
+  {
+    "name": "Fieldwork Coffee",
+    "location": "CBD",
+    "suburb": "CBD",
+    "spectrum": 4,
+    "price": 3,
+    "atmosphere": "cozy|lively",
+    "desc": "멜버른 드그레이브스 거리에 위치한 작지만 아늑한 카페로, 친절한 직원들이 반겨줍니다. 부드럽고 크리미한 커피 맛이 특징이며, 라떼로 즐기기 좋습니다.",
+    "oneLiner": "친절함과 부드러운 커피, 드그레이브스 거리의 작은 안식처",
+    "tags": "Nutty ⭐⭐⭐⭐|Local Gem",
+    "image": "https://places.googleapis.com/v1/places/ChIJWR4AJIpD1moRqnRC9abE3To/photos/ATCDNfVOcz6hip6e5wIN4xFSHszL1LplQaskdvJJ21KRZHv7mbHtKuw_fmoM4qznsI4JgIaSO_rgG29AoGH2I38hsgDU1snVj_sj91tE5FuDJRPr8unBSA4T5opjmeaq_OfsdxLoiM-rKi6weaTc0KcSAkazzh8D-96b3mLnmvd25OruIKzxeE0g26NoGx0PHrniw8iv73ZELkeSenRW01SMVPffxuQ_mo2ot98knzo2wehF3qyA8W5kuRV8xUyyIvnwkGuD7Ff_MMPbJmbzdSB6xnFAjhdvtzlh1HkpEO4Ap-2ztiixK65993hTVsopnFX09TLIDC_gQq1Ff5Lmvc9h6iHBPiJWP0M_jaerQ03_qL1nWJef6natWLvQ1hAdZ0p73NmIMp-PSnjZmhAFyDZNNqN7BnRSzDJro-3r2_ZW3iI8r3ow/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
+    "rating": 4.8,
+    "reviews": 78
+  },
+  {
+    "name": "Moment Coffee",
+    "location": "CBD",
+    "suburb": "CBD",
+    "spectrum": 3,
+    "price": 4,
+    "atmosphere": "modern|cozy",
+    "desc": "차분하고 미니멀한 분위기에서 부드럽고 균형 잡힌 커피와 독특한 말차, 자스민 커피를 즐길 수 있는 아늑한 공간입니다. 편안한 휴식이나 조용한 업무에 적합하며, 친절한 서비스가 인상적입니다.",
+    "oneLiner": "이름처럼 편안하고 특별한 순간을 선사하는 곳",
+    "tags": "Balance ⭐⭐⭐⭐⭐|Serene",
+    "image": "https://places.googleapis.com/v1/places/ChIJbUz0Quxd1moRt7fF2vJszFw/photos/ATCDNfU892Mhz8htNkW_68LhVW3GzmOcMIjCt-ZEUcKxJl4sWFDxSJlYNBF7c2hYK6Qfr-igfQsNbTdNE9gDmmalX3-WZoWrUN8aTgTV7Rxww8T6WcqOjylvzUQbDKMlvg79pQKmr6M1VPETigzIpvHMvaQYuwb7X-ts7VK_sgGpTADxgoekVukuHsKLZMyZHEM1mNFgnzte_EfZOVjQN38m1-kIPZDyG80DkAyw6oEy9XQXZn4Ly5Z9NSLINU_skDO9fobSdOvyeI02xTSoUXraB9fI6mA24N-lS3jA3YH5s_5v5w/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
+    "rating": 4.8,
+    "reviews": 106
+  },
+  {
+    "name": "Bearded Brothers Espresso - Coffee",
+    "location": "CBD",
+    "suburb": "CBD",
+    "spectrum": 4,
+    "price": 3,
+    "atmosphere": "cozy|lively",
+    "desc": "멜버른 CBD에 위치한 작지만 활기찬 에스프레소 바입니다. 진하고 고소한 커피 맛으로, 바쁜 일상 속에서도 잠시 멈춰 에너지를 충전하기 좋습니다.",
+    "oneLiner": "멜버른 CBD 속 작지만 강한 커피 에너지",
+    "tags": "Nutty ⭐⭐⭐⭐|Local Favorite",
+    "image": "https://places.googleapis.com/v1/places/ChIJUwF5_rRC1moRhcYk_DNGgDY/photos/ATCDNfUeR41Mzm0-P1kRZxsyWYjSZ8PDcleNwvb3S342sJ7o7YeXWkRF2ilQVGmQMxk2zVNdfIFmW4UugSN3K8eilZUpgJe-7YVcTHOFmgIyq7zchghSTbixIzE8Pj8fUvZpMYoNTlIEy_FeqK4Acsf7pev_9UG-lSY_E9We-DSkgqX2X47nUc5FlwH38oSNa-7RF7EX6jCA61fXIBZmcyaGt-50AZw-45RPoAKLFVLpHBIFIPvoi7tna1nDvhM2qH1dzDnQTlIn-q0GyQY9mJWNzoEbzm823rVImFNCYj7iQSIh-VyuuBWR8nakPgttZ_1wZftI8-YHkEjV3Ua1_2-inA1x1MRKST6BAsEmsE4c8ezxCqi6aCk7Qz8EE5pRrtfzJpUcF4o_pPftdbsgt5XZulwOQKMOMaiBtonl3bgEQFCFrg/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
+    "rating": 4.8,
+    "reviews": 202
+  },
+  {
+    "name": "Cafe Tomi",
+    "location": "North Melbourne",
+    "suburb": "North Melbourne",
+    "spectrum": 4,
+    "price": 4,
+    "atmosphere": "cozy|unique",
+    "desc": "작지만 아늑하고 따뜻한 분위기에서 재즈 음악과 함께 편안함을 느낄 수 있는 카페입니다. 부드러운 뒷맛의 커피와 시그니처 코코 클라우드, 다크 초콜릿 베이스의 음료 등 다채로운 맛을 즐길 수 있습니다.",
+    "oneLiner": "재즈 선율 속, 아늑한 휴식과 달콤한 커피 한 잔 ☕️",
+    "tags": "Nutty ⭐⭐⭐⭐|Jazz",
+    "image": "https://places.googleapis.com/v1/places/ChIJrzIaCjVd1moRNxrvrFcIpqs/photos/ATCDNfUJgngd_KNyBtJYKOrJITEeX7kRJQF8QRNbJunJvwq86pWMd427h9jclTIo1kAxYVQ4LhqHQXSwurL8OkiOG0w7jrmYI6TISkJ7giHhDTFqf6YE7C_LMLt2O8ex2PRoSZC1P1O9gz0_L2FqKC0c32o782ScIIw7DWrdrietfs4tqtvq2tbNS1OKAGonkyiLIK2Cvvo43bvE1JkY5WR8qk4-T-deickME3NYvyMT73HKHNyvd4sUZjHnlvkv172rAx1apBmSKBTtnmOLk25_-zRxYFSWvcDpAvFjvqpyCXXDUMkLsp6t-94Yamuztk_kpmN2f8-tkq1I8mcy0z4PoGt6R-m9meWQ6RYr9X6CmUnv8kBLO1MaWB0gwEFTq2Ds_BCb67vzwzHjTAVIk9N2LOYm8y3XccHiOtYtvopCoDtAVmWPuEXyT4I73jOxHmCH/media?key=AIzaSyA2FwTiTqyVBkOxaYhitAdKPYHYYxqNH-Y&maxHeightPx=400&maxWidthPx=400",
+    "rating": 4.7,
+    "reviews": 179
   }
 ]

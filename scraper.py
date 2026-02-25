@@ -46,7 +46,7 @@ def search_cafes(query):
     headers = {
         "Content-Type": "application/json",
         "X-Goog-Api-Key": PLACES_API_KEY,
-        "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.reviews,places.photos"
+        "X-Goog-FieldMask": "places.id,places.displayName,places.rating,places.userRatingCount,places.formattedAddress,places.reviews,places.photos,places.addressComponents"
     }
     payload = {
         "textQuery": query,
@@ -80,6 +80,23 @@ def search_cafes(query):
         photos = place.get("photos", [])
         photo_ref = photos[0].get("name", "") if photos else ""
         
+        # Extract accurate Suburb
+        components = place.get("addressComponents", [])
+        locality = None
+        sublocality = None
+        for comp in components:
+            types = comp.get("types", [])
+            if "locality" in types:
+                locality = comp.get("shortText", "")
+            if "sublocality" in types or "sublocality_level_1" in types:
+                sublocality = comp.get("shortText", "")
+                
+        suburb = sublocality if sublocality else locality
+        if suburb and suburb.lower() == "melbourne":
+            suburb = "CBD"
+        if not suburb:
+            suburb = place.get("formattedAddress", "").split(",")[0].split(" ")[-1] if "," in place.get("formattedAddress", "") else "Melbourne"
+
         user_rating_count = place.get("userRatingCount", 0)
         if user_rating_count < 50:
             print(f"  -> Skipping '{name}' (Low review count: {user_rating_count})")
@@ -92,6 +109,7 @@ def search_cafes(query):
         results.append({
             "name": name,
             "address": place.get("formattedAddress", ""),
+            "suburb": suburb,
             "rating": place.get("rating", 0),
             "reviews": user_rating_count,
             "review_texts": review_texts,
@@ -152,7 +170,7 @@ def analyze_cafe_with_ai(cafe_data, existing_names):
         merged = {
             "name": cafe_data["name"],
             "location": result.get("location", "Others"), 
-            "suburb": cafe_data["address"].split(",")[0].split(" ")[-1] if "," in cafe_data["address"] else "Melbourne",
+            "suburb": cafe_data.get("suburb", "Melbourne"),
             "spectrum": result.get("spectrum", 3),
             "price": result.get("price", 3),
             "atmosphere": result.get("atmosphere", ["cozy"]),

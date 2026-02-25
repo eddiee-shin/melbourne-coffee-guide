@@ -82,7 +82,7 @@
     "reviews": 800,
     "lat": -37.8045325,
     "lng": 144.9612071,
-    "signature": "Citrus Long Black"
+    "signature": "Citrus long black"
   },
   {
     "name": "Market Lane Coffee",
@@ -167,7 +167,7 @@
     "reviews": 5000,
     "lat": -37.8029711,
     "lng": 144.9590027,
-    "signature": "스페셜티 커피"
+    "signature": "Filter Coffee"
   },
   {
     "name": "Disciple Roasters",
@@ -184,7 +184,7 @@
     "reviews": 200,
     "lat": -37.775525,
     "lng": 144.9601403,
-    "signature": "Black Coffee"
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Tone Coffee",
@@ -252,7 +252,7 @@
     "reviews": 300,
     "lat": -37.7782319,
     "lng": 144.9771245,
-    "signature": "Pastries"
+    "signature": "Milk Coffee"
   },
   {
     "name": "St Ali",
@@ -286,7 +286,7 @@
     "reviews": 2000,
     "lat": -37.8106637,
     "lng": 144.9617933,
-    "signature": "Flat White"
+    "signature": "Deconstructed Macchiato"
   },
   {
     "name": "Code Black Coffee",
@@ -303,7 +303,7 @@
     "reviews": 1500,
     "lat": -37.8330718,
     "lng": 144.9567603,
-    "signature": "Espresso with cream"
+    "signature": "Velvet Morning"
   },
   {
     "name": "Wide Open Road",
@@ -354,7 +354,7 @@
     "reviews": 4500,
     "lat": -37.816791,
     "lng": 144.966162,
-    "signature": "Filter Coffee"
+    "signature": "Gesha"
   },
   {
     "name": "Rumble Coffee",
@@ -371,7 +371,7 @@
     "reviews": 400,
     "lat": -37.7923272,
     "lng": 144.934491,
-    "signature": "Batch Brew"
+    "signature": "Magic"
   },
   {
     "name": "Padre Coffee",
@@ -405,7 +405,7 @@
     "reviews": 2000,
     "lat": -38.2348961,
     "lng": 145.0576163,
-    "signature": "Plants Have Feelings"
+    "signature": "Iced Mocha"
   },
   {
     "name": "Brother Baba Budan",
@@ -439,7 +439,7 @@
     "reviews": 1500,
     "lat": -37.8680073,
     "lng": 144.9908547,
-    "signature": "Chai"
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Higher Ground",
@@ -456,7 +456,7 @@
     "reviews": 5000,
     "lat": -37.8158034,
     "lng": 144.9530273,
-    "signature": "Ricotta Hotcakes"
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Auction Rooms",
@@ -473,7 +473,7 @@
     "reviews": 4000,
     "lat": -37.8025013,
     "lng": 144.9494883,
-    "signature": "Rhubarb French Toast"
+    "signature": "Butterfly Pea Velvet Coffee"
   },
   {
     "name": "The Kettle Black",
@@ -490,7 +490,7 @@
     "reviews": 4000,
     "lat": -37.8340784,
     "lng": 144.9713383,
-    "signature": "Coffee"
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Little Rogue.",
@@ -524,7 +524,7 @@
     "reviews": 425,
     "lat": -37.81688,
     "lng": 144.9561555,
-    "signature": "Strawberry cheesecake coffee"
+    "signature": "Strawberry coffee"
   },
   {
     "name": "Palace Coffee",
@@ -541,7 +541,7 @@
     "reviews": 138,
     "lat": -37.8129368,
     "lng": 144.9724716,
-    "signature": "Cinnamon bun"
+    "signature": "Cold Brew"
   },
   {
     "name": "Overlay Coffee",
@@ -575,7 +575,7 @@
     "reviews": 891,
     "lat": -37.8092401,
     "lng": 144.9684912,
-    "signature": "스페셜티 커피"
+    "signature": "Flat white"
   },
   {
     "name": "Otherside Coffee",
@@ -592,7 +592,7 @@
     "reviews": 560,
     "lat": -37.8139653,
     "lng": 144.9676798,
-    "signature": "Almond Flat White"
+    "signature": "Almond milk flat white"
   },
   {
     "name": "Spyglass Coffee",
@@ -609,7 +609,7 @@
     "reviews": 70,
     "lat": -37.8179319,
     "lng": 144.9624049,
-    "signature": "Porchetta focaccia"
+    "signature": "Spyglass house blend"
   },
   {
     "name": "Traveller Coffee",
@@ -643,7 +643,7 @@
     "reviews": 230,
     "lat": -37.8085362,
     "lng": 144.9709184,
-    "signature": "Matcha white chocolate"
+    "signature": "Matcha White Chocolate"
   },
   {
     "name": "Plus Coffee & Co",
@@ -660,7 +660,7 @@
     "reviews": 336,
     "lat": -37.8171645,
     "lng": 144.9648549,
-    "signature": "Matcha"
+    "signature": "Tiramisu Latte"
   },
   {
     "name": "Fabian",
@@ -694,7 +694,7 @@
     "reviews": 748,
     "lat": -37.918436,
     "lng": 145.0380489,
-    "signature": "Eggs Benedict"
+    "signature": "스페셜티 커피"
   },
   {
     "name": "Fieldwork Coffee",
@@ -728,7 +728,7 @@
     "reviews": 106,
     "lat": -37.8122683,
     "lng": 144.9582693,
-    "signature": "Japanese Matcha"
+    "signature": "Jasmine coffee"
   },
   {
     "name": "Bearded Brothers Espresso - Coffee",

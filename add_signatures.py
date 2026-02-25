@@ -45,13 +45,14 @@ def extract_signature(cafe_name, review_texts):
     client = genai.Client(api_key=GEMINI_API_KEY)
     
     prompt = f"""
-    Analyze the following cafe reviews and extract the cafe's SIGNATURE DRINK, COFFEE, or BEST MENU ITEM.
+    Analyze the following cafe reviews and extract the cafe's SIGNATURE COFFEE or COFFEE/ESPRESSO DRINK.
     Cafe Name: {cafe_name}
     Reviews:
     {json.dumps(review_texts, ensure_ascii=False, indent=2)}
     
-    Output exactly ONE short string (1-3 words) representing the signature item in Korean or English (e.g., "Magic", "Raspberry Candy Filter", "바닐라 라떼", "Filter Coffee", "에스프레소"). 
+    Output exactly ONE short string (1-3 words) representing the signature coffee/drink in Korean or English (e.g., "Magic", "Raspberry Candy Filter", "바닐라 라떼", "Filter Coffee", "에스프레소"). 
     Do NOT output JSON. Do NOT add explanation or punctuation. Just the item name. If unclear, output "스페셜티 커피".
+    CRITICAL: YOU MUST ONLY OUTPUT A COFFEE OR BEVERAGE. DO NOT OUTPUT FOOD ITEMS (e.g., "Hotcakes", "Eggs Benedict", "Pastries"). If the cafe is famous for food, ignore it and find their best coffee.
     """
     
     response = client.models.generate_content(
@@ -86,9 +87,10 @@ def add_signatures():
         cafe_address = row.get("address", "")
         current_signature = row.get("signature")
         
-        if current_signature and str(current_signature).strip() != "":
-            print(f"[{i+1}/{len(records)}] Skipping '{cafe_name}': Signature already exists ({current_signature}).")
-            continue
+        # Remove the check that skips if signature exists, because we want to overwrite existing text.
+        # if current_signature and str(current_signature).strip() != "":
+        #     print(f"[{i+1}/{len(records)}] Skipping '{cafe_name}': Signature already exists ({current_signature}).")
+        #     continue
             
         if not cafe_name:
             continue

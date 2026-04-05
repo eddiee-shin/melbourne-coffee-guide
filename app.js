@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="popup-cafe-name">${shop.name}</div>
                     <div class="popup-suburb">📍 ${shop.suburb}</div>
                     ${shop.signature ? `<div class="popup-signature">👑 시그니쳐 메뉴: ${shop.signature}</div>` : ''}
-                    <img class="popup-cafe-image" src="${displayImage}" alt="${shop.name}" onerror="this.style.display='none'">
+                    <img class="popup-cafe-image" src="images/${displayImage}" alt="${shop.name}" onerror="this.style.display='none'">
                 `;
 
                 L.marker([shop.lat, shop.lng])
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             el.innerHTML = `
                 <div class="shop-image">
-                    <img src="${displayImage}" alt="${shop.name}" onerror="this.parentElement.style.background='#e8d5c4'; this.style.display='none';">
+                    <img src="images/${displayImage}" alt="${shop.name}" onerror="this.parentElement.style.background='#e8d5c4'; this.style.display='none';">
                 </div>
                 <div class="card-header">
                     <div class="header-main">

@@ -95,7 +95,16 @@
         </div>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        window.__APP_CONFIG__ = window.__APP_CONFIG__ || {
+            supabaseUrl: 'https://lqqlthenesulilcbjsyr.supabase.co',
+            supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxcWx0aGVuZXN1bGlsY2Jqc3lyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2ODkxMTUsImV4cCI6MjA5MTI2NTExNX0.JyYgd12yrB3GP_5EOqzwwwV8dd37OQmGsqseoCpEd-0',
+            cafesTable: 'cafes',
+            likesTable: 'cafe_likes',
+            commentsTable: 'cafe_comments'
+        };
+    </script>
+    <script type="module" src="app.js?v=20260409-1"></script>
 </body>
 
 </html>

@@ -1,5 +1,10 @@
 .env
-credentials.json
-venv/
+.DS_Store
+.antigravity/
 __pycache__/
 *.pyc
+.vscode/
+.idea/
+node_modules/
+.vercel
+credentials.json

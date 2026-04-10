@@ -225,19 +225,26 @@ async function handleRecommendationSubmit(event) {
 }
 
 function matchesFilters(shop, atmosphere, location) {
-    const suburb = String(shop.suburb || '');
-
     if (location !== 'any') {
-        if (location === 'CBD' && !isCbdSuburb(suburb)) return false;
-        if (location === 'Fitzroy/Collingwood' && !(suburb.includes('Fitzroy') || suburb.includes('Collingwood'))) return false;
-        if (location === 'Brunswick' && !suburb.includes('Brunswick')) return false;
-        if (location === 'South Melbourne' && !suburb.includes('South Melbourne')) return false;
-        if (location === 'North Melbourne' && !suburb.includes('North Melbourne')) return false;
+        // Dynamic matching: if shop.location matches exactly
+        if (shop.location === location) return true;
+        
+        // Legacy fallback for well-known areas to maintain compatibility
+        const suburb = String(shop.suburb || '');
+        if (location === 'CBD' && isCbdSuburb(suburb)) return true;
+        if (location === 'Fitzroy/Collingwood' && (suburb.includes('Fitzroy') || suburb.includes('Collingwood'))) return true;
+        if (location === 'Brunswick' && suburb.includes('Brunswick')) return true;
+        if (location === 'South Melbourne' && suburb.includes('South Melbourne')) return true;
+        if (location === 'North Melbourne' && suburb.includes('North Melbourne')) return true;
+        
+        // If it got here and location was "Others", check the exclusion list
         if (location === 'Others') {
-            const isKnown = ['CBD', 'Fitzroy', 'Collingwood', 'Brunswick', 'South Melbourne', 'North Melbourne']
-                .some((label) => suburb.includes(label));
-            if (isKnown || isCbdSuburb(suburb)) return false;
+             const isKnown = ['CBD', 'Fitzroy', 'Collingwood', 'Brunswick', 'South Melbourne', 'North Melbourne']
+                 .some((label) => suburb.includes(label));
+             if (!isKnown && !isCbdSuburb(suburb)) return true;
         }
+
+        return false;
     }
 
     if (atmosphere !== 'any') {
@@ -302,12 +309,6 @@ function renderLocationFilter(locations) {
         option.textContent = loc.name;
         dom.locationSelect.appendChild(option);
     });
-    
-    // Add "Others" as fallback fallback
-    const othersOption = document.createElement('option');
-    othersOption.value = 'Others';
-    othersOption.textContent = '기타 (Others)';
-    dom.locationSelect.appendChild(othersOption);
 }
 
 

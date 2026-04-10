@@ -226,25 +226,8 @@ async function handleRecommendationSubmit(event) {
 
 function matchesFilters(shop, atmosphere, location) {
     if (location !== 'any') {
-        // Dynamic matching: if shop.location matches exactly
-        if (shop.location === location) return true;
-        
-        // Legacy fallback for well-known areas to maintain compatibility
-        const suburb = String(shop.suburb || '');
-        if (location === 'CBD' && isCbdSuburb(suburb)) return true;
-        if (location === 'Fitzroy/Collingwood' && (suburb.includes('Fitzroy') || suburb.includes('Collingwood'))) return true;
-        if (location === 'Brunswick' && suburb.includes('Brunswick')) return true;
-        if (location === 'South Melbourne' && suburb.includes('South Melbourne')) return true;
-        if (location === 'North Melbourne' && suburb.includes('North Melbourne')) return true;
-        
-        // If it got here and location was "Others", check the exclusion list
-        if (location === 'Others') {
-             const isKnown = ['CBD', 'Fitzroy', 'Collingwood', 'Brunswick', 'South Melbourne', 'North Melbourne']
-                 .some((label) => suburb.includes(label));
-             if (!isKnown && !isCbdSuburb(suburb)) return true;
-        }
-
-        return false;
+        // Exact match check - handles Carlton, Others, and all other regions precisely
+        if (shop.location !== location) return false;
     }
 
     if (atmosphere !== 'any') {

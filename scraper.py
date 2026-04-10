@@ -217,7 +217,7 @@ def analyze_cafe_with_ai(cafe_data: dict[str, Any], existing_names: list[str]) -
 
     Please output a JSON object with EXACTLY these keys:
     - "isDuplicate": boolean (true/false). Set to true ONLY if this cafe conceptually already exists in the provided list. Be extremely smart about English/Korean translations (e.g. "듁스 커피 로스터스" is the same as "Dukes Coffee Roasters").
-    - "location": string. Strictly map the address to ONE of these exactly: ["CBD", "North Melbourne", "South Melbourne", "Fitzroy/Collingwood", "Brunswick", "Others"].
+    - "location": string. Strictly map the address to ONE of these exactly: ["CBD", "North Melbourne", "South Melbourne", "Fitzroy/Collingwood", "Brunswick", "Carlton", "Others"].
     - "spectrum": integer from 1 to 5. 1=Very Fruity/Acidic, 3=Balanced, 5=Very Nutty/Chocolatey/Comforting.
     - "price": integer from 1 to 5. (1=Cheap, 5=Very Expensive).
     - "atmosphere": Array of 1 to 2 strings from this list exactly: ["modern", "cozy", "unique", "lively"]

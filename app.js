@@ -5,9 +5,10 @@ const SUPABASE_URL = APP_CONFIG.supabaseUrl || window.__SUPABASE_URL__ || '';
 const SUPABASE_ANON_KEY = APP_CONFIG.supabaseAnonKey || window.__SUPABASE_ANON_KEY__ || '';
 const SUPABASE_SCHEMA = APP_CONFIG.supabaseSchema || 'public';
 const TABLES = {
-    cafes: APP_CONFIG.cafesTable || 'cafes_with_feedback', // Use view with aggregated counts
+    cafes: APP_CONFIG.cafesTable || 'cafes_with_feedback', 
     likes: APP_CONFIG.likesTable || 'cafe_likes',
-    comments: APP_CONFIG.commentsTable || 'cafe_comments'
+    comments: APP_CONFIG.commentsTable || 'cafe_comments',
+    locations: 'locations'
 };
 const LOCAL_FEEDBACK_KEY = 'coffeeGuideLocalFeedback';
 const LOCAL_LIKED_KEY = 'coffeeGuideViewerLikes';
@@ -32,6 +33,7 @@ const dom = {
     display: null,
     resultsSection: null,
     resultsContainer: null,
+    locationSelect: null,
     modal: null,
     modalTitle: null,
     iframe: null,
@@ -51,6 +53,7 @@ async function bootstrap() {
     dom.display = document.getElementById('taste-display');
     dom.resultsSection = document.getElementById('results-section');
     dom.resultsContainer = document.getElementById('results-container');
+    dom.locationSelect = document.getElementById('location');
     dom.modal = document.getElementById('reviews-modal');
     dom.modalTitle = document.getElementById('modal-title');
     dom.iframe = document.getElementById('reviews-iframe');
@@ -85,6 +88,10 @@ async function bootstrap() {
         })));
 
         state.feedback = await loadFeedback(cafes);
+        
+        // Load and render dynamic locations
+        const locations = await loadLocations();
+        renderLocationFilter(locations);
     } catch (error) {
         console.error('Failed to initialize cafe data:', error);
         state.cafes = [];
@@ -265,6 +272,42 @@ async function loadCafes() {
     }
 
     return loadLocalCafes();
+}
+
+async function loadLocations() {
+    console.log('%c[Supabase] FETCHING LOCATIONS...', 'color: #3498db;');
+    const { data, error } = await state.supabase
+        .from(TABLES.locations)
+        .select('*')
+        .order('name', { ascending: true });
+
+    if (error) {
+        console.error('Error loading locations:', error);
+        return [];
+    }
+    return data || [];
+}
+
+function renderLocationFilter(locations) {
+    if (!dom.locationSelect) return;
+    
+    // Keep the first "All Locations" option
+    const firstOption = dom.locationSelect.options[0];
+    dom.locationSelect.innerHTML = '';
+    dom.locationSelect.appendChild(firstOption);
+
+    locations.forEach(loc => {
+        const option = document.createElement('option');
+        option.value = loc.name;
+        option.textContent = loc.name;
+        dom.locationSelect.appendChild(option);
+    });
+    
+    // Add "Others" as fallback fallback
+    const othersOption = document.createElement('option');
+    othersOption.value = 'Others';
+    othersOption.textContent = '기타 (Others)';
+    dom.locationSelect.appendChild(othersOption);
 }
 
 

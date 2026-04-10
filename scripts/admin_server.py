@@ -5,6 +5,7 @@ import mimetypes
 import os
 import subprocess
 import sys
+import time
 from http import HTTPStatus
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -40,6 +41,10 @@ SUPABASE_URL = os.getenv('SUPABASE_URL', '')
 SUPABASE_SERVICE_ROLE_KEY = os.getenv('SUPABASE_SERVICE_ROLE_KEY', '')
 SUPABASE_ANON_KEY = os.getenv('SUPABASE_ANON_KEY', '') or SUPABASE_SERVICE_ROLE_KEY
 SCRAPER_PATH = ROOT / 'scraper.py'
+IMAGES_DIR = ROOT / 'images'
+
+# Ensure images directory exists
+IMAGES_DIR.mkdir(exist_ok=True)
 
 
 def json_response(handler: SimpleHTTPRequestHandler, status: int, payload: dict) -> None:
@@ -48,7 +53,7 @@ def json_response(handler: SimpleHTTPRequestHandler, status: int, payload: dict)
     handler.send_header('Content-Type', 'application/json; charset=utf-8')
     handler.send_header('Content-Length', str(len(body)))
     handler.send_header('Access-Control-Allow-Origin', '*')
-    handler.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+    handler.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-File-Name')
     handler.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
     handler.end_headers()
     handler.wfile.write(body)
@@ -162,7 +167,7 @@ class AdminHandler(SimpleHTTPRequestHandler):
 
     def end_headers(self) -> None:
         self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type')
+        self.send_header('Access-Control-Allow-Headers', 'Authorization, Content-Type, X-File-Name')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         super().end_headers()
 
@@ -179,6 +184,10 @@ class AdminHandler(SimpleHTTPRequestHandler):
 
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
+        if parsed.path == '/api/admin/upload-image':
+            self.handle_upload_image()
+            return
+            
         if parsed.path != '/api/admin/run-scraper':
             json_response(self, HTTPStatus.NOT_FOUND, {'error': 'Not found'})
             return
@@ -271,6 +280,55 @@ class AdminHandler(SimpleHTTPRequestHandler):
             msg = f"\n[ERROR] Failed to execute scraper: {exc}\n"
             self.wfile.write(msg.encode('utf-8'))
             self.wfile.flush()
+
+    def handle_upload_image(self) -> None:
+        auth_header = self.headers.get('Authorization', '')
+        if not auth_header.startswith('Bearer '):
+            json_response(self, HTTPStatus.UNAUTHORIZED, {'error': 'Missing bearer token'})
+            return
+
+        access_token = auth_header.split(' ', 1)[1].strip()
+        try:
+            user = auth_user(access_token)
+            if not is_admin(user['id'], access_token):
+                json_response(self, HTTPStatus.FORBIDDEN, {'error': 'Not an admin user'})
+                return
+        except Exception as exc:
+            print(f"Auth verification failed: {exc}")
+            json_response(self, HTTPStatus.UNAUTHORIZED, {'error': f'Auth failed: {exc}'})
+            return
+
+        print(f"Handling image upload. Headers: {dict(self.headers)}")
+
+        # Simple file capture from raw body
+        # We expect X-File-Name header and raw binary content
+        filename = self.headers.get('X-File-Name', f'upload_{int(time.time())}.jpg')
+        # Clean filename to prevent traversal
+        safe_filename = "".join([c for c in filename if c.isalnum() or c in '._-']).strip()
+        if not safe_filename:
+            safe_filename = "unnamed_image.jpg"
+            
+        target_path = IMAGES_DIR / safe_filename
+        
+        length = int(self.headers.get('Content-Length', '0'))
+        if length <= 0:
+            json_response(self, HTTPStatus.BAD_REQUEST, {'error': 'Empty file content'})
+            return
+            
+        try:
+            with open(target_path, 'wb') as f:
+                f.write(self.rfile.read(length))
+            
+            # Return the relative path from ROOT point of view
+            # Since 8000 port serves ROOT, the URL will be /images/filename
+            json_response(self, HTTPStatus.OK, {
+                'url': f'/images/{safe_filename}',
+                'path': str(target_path.relative_to(ROOT))
+            })
+            print(f"Image uploaded successfully: {safe_filename}")
+        except Exception as exc:
+            print(f"Failed to save image: {exc}")
+            json_response(self, HTTPStatus.INTERNAL_SERVER_ERROR, {'error': f'Save failed: {exc}'})
 
 
 if __name__ == '__main__':

@@ -104,7 +104,21 @@
             commentsTable: 'cafe_comments'
         };
     </script>
-    <script type="module" src="app.js?v=20260409-1"></script>
+    <!-- Connection Status Indicator -->
+    <div id="connection-status" style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #2ecc71; color: white; padding: 10px 20px; border-radius: 20px; font-weight: bold; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: opacity 0.5s; opacity: 0; pointer-events: none;">
+        ✅ Server Connected
+    </div>
+
+    <!-- Dynamic Script Loader to Force Cache Bypass -->
+    <script type="module">
+        const script = document.createElement('script');
+        script.type = 'module';
+        // Use a unique timestamp to force the browser to fetch the latest version
+        const timestamp = new Date().getTime();
+        script.src = `app.js?t=${timestamp}`;
+        document.body.appendChild(script);
+        console.log(`[CacheBuster] Loading app.js with timestamp: ${timestamp}`);
+    </script>
 </body>
 
 </html>

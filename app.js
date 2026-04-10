@@ -5,7 +5,7 @@ const SUPABASE_URL = APP_CONFIG.supabaseUrl || window.__SUPABASE_URL__ || '';
 const SUPABASE_ANON_KEY = APP_CONFIG.supabaseAnonKey || window.__SUPABASE_ANON_KEY__ || '';
 const SUPABASE_SCHEMA = APP_CONFIG.supabaseSchema || 'public';
 const TABLES = {
-    cafes: APP_CONFIG.cafesTable || 'cafes',
+    cafes: APP_CONFIG.cafesTable || 'cafes_with_feedback', // Use view with aggregated counts
     likes: APP_CONFIG.likesTable || 'cafe_likes',
     comments: APP_CONFIG.commentsTable || 'cafe_comments'
 };
@@ -19,7 +19,7 @@ const state = {
     cafes: [],
     feedback: {},
     currentResults: [],
-    viewerId: getOrCreateViewerId(),
+    viewerId: null, // Initialized in bootstrap for robustness
     supabase: null,
     map: null,
     markersLayer: null
@@ -38,7 +38,11 @@ const dom = {
     closeModal: null
 };
 
-document.addEventListener('DOMContentLoaded', bootstrap);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+    bootstrap();
+}
 
 async function bootstrap() {
     dom.countSpan = document.getElementById('total-cafes');
@@ -52,7 +56,16 @@ async function bootstrap() {
     dom.iframe = document.getElementById('reviews-iframe');
     dom.closeModal = document.querySelector('.close-modal');
 
+    state.viewerId = getOrCreateViewerId();
+    window.MCG_DEBUG = state;
+    
     initSupabaseClient();
+    if (state.supabase) {
+        console.log('%c[Supabase] CONNECTION SUCCESS: Connected as ' + state.viewerId, 'color: #2ecc71; font-weight: bold;');
+    } else {
+        console.error('%c[Supabase] CONNECTION FAILED: Check your config.', 'color: #e74c3c; font-weight: bold;');
+    }
+
     initSlider();
     bindEvents();
     updateTotalCount(0);
@@ -61,6 +74,16 @@ async function bootstrap() {
         const cafes = await loadCafes();
         state.cafes = cafes;
         updateTotalCount(cafes.length);
+        
+        // Final debug table to prove data content
+        console.log('%c[DEBUG] PROOF OF DATA CONTENT:', 'color: #3498db; font-weight: bold;');
+        console.table(cafes.filter(c => c.name && (c.name.includes('Patricia') || c.name.includes('Ali') || c.name.includes('Proud Mary'))).map(c => ({
+            Name: c.name,
+            ID: c.id,
+            Likes: c.likeCount,
+            Comments: c.commentCount
+        })));
+
         state.feedback = await loadFeedback(cafes);
     } catch (error) {
         console.error('Failed to initialize cafe data:', error);
@@ -80,6 +103,15 @@ function initSupabaseClient() {
         state.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
             db: { schema: SUPABASE_SCHEMA }
         });
+        
+        // Show success notification
+        const statusEl = document.getElementById('connection-status');
+        if (statusEl) {
+            statusEl.style.opacity = '1';
+            setTimeout(() => {
+                statusEl.style.opacity = '0';
+            }, 3000);
+        }
     } catch (error) {
         console.warn('Supabase client could not be created; falling back to local data.', error);
         state.supabase = null;
@@ -146,7 +178,27 @@ async function handleRecommendationSubmit(event) {
 
     const suggestions = state.cafes
         .filter((shop) => matchesFilters(shop, atmosphere, location))
-        .sort((a, b) => Math.abs(a.spectrum - tastePref) - Math.abs(b.spectrum - tastePref));
+        .sort((a, b) => {
+            const keyA = getCafeKey(a);
+            const keyB = getCafeKey(b);
+            const fbA = state.feedback[keyA] || { likeCount: 0 };
+            const fbB = state.feedback[keyB] || { likeCount: 0 };
+
+            // 1. Priority: Likes Count
+            if (fbB.likeCount !== fbA.likeCount) {
+                return fbB.likeCount - fbA.likeCount;
+            }
+            // 2. Priority: Comments Count
+            if (b.commentCount !== a.commentCount) {
+                return b.commentCount - a.commentCount;
+            }
+            // 3. Priority: Google Reviews Count
+            if (b.reviews !== a.reviews) {
+                return b.reviews - a.reviews;
+            }
+            // 4. Default: Taste Spectrum proximity
+            return Math.abs(a.spectrum - tastePref) - Math.abs(b.spectrum - tastePref);
+        });
 
     state.currentResults = suggestions;
     renderResults(suggestions);
@@ -248,6 +300,11 @@ function normalizeCafe(row) {
     cafe.image_url = row.image_url || row.image || '';
     cafe.image_path = row.image_path || '';
     cafe.last_scraped_at = row.last_scraped_at || null;
+    
+    // Aggregate feedback from view or local fallback
+    cafe.likeCount = toNumber(row.like_count ?? 0, 0);
+    cafe.commentCount = toNumber(row.approved_comment_count ?? 0, 0);
+    
     return cafe;
 }
 
@@ -381,13 +438,17 @@ function writeJsonStorage(key, value) {
 function getOrCreateViewerId() {
     try {
         let viewerId = localStorage.getItem(VIEWER_ID_KEY);
-        if (!viewerId) {
-            viewerId = `viewer_${cryptoRandomString()}`;
+        // Ensure it's a valid non-null string
+        if (!viewerId || viewerId === 'undefined' || viewerId === 'null') {
+            viewerId = (window.crypto && window.crypto.randomUUID) 
+                ? crypto.randomUUID() 
+                : 'v_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
             localStorage.setItem(VIEWER_ID_KEY, viewerId);
         }
         return viewerId;
-    } catch {
-        return `viewer_${cryptoRandomString()}`;
+    } catch (err) {
+        console.warn('LocalStorage access failed, using session-only viewerId');
+        return 'temp_' + Math.random().toString(36).slice(2);
     }
 }
 
@@ -482,7 +543,10 @@ function renderResults(shops) {
                     </div>
 
                     <div class="comment-preview">
-                        <div class="comment-preview-title">최근 댓글</div>
+                        <div class="comment-preview-header">
+                            <span class="comment-preview-title">최근 댓글</span>
+                            <span class="comment-total-badge">💬 ${shop.commentCount}</span>
+                        </div>
                         <div class="comment-preview-list">
                             ${commentsHtml}
                         </div>
@@ -582,34 +646,49 @@ function normalizeCommentText(value) {
 }
 
 async function toggleLike(cafe) {
+    if (!state.supabase) {
+        const msg = '서버에 연결되지 않았습니다. 인터넷 연결을 확인해주세요.';
+        console.error(msg);
+        alert(msg);
+        return;
+    }
+
+    if (!state.viewerId) {
+        alert('사용자 식별자가 생성되지 않았습니다. 새로고침 후 다시 시도해주세요.');
+        return;
+    }
+
     const cafeKey = getCafeKey(cafe);
     const feedback = state.feedback[cafeKey] || { likeCount: 0, viewerLiked: false, comments: [] };
     const nextLiked = !feedback.viewerLiked;
 
     try {
-        if (state.supabase) {
-            if (nextLiked) {
-                const { error } = await state.supabase
-                    .from(TABLES.likes)
-                    .upsert({
-                        cafe_id: cafe.id,
-                        viewer_id: state.viewerId,
-                        source: 'web'
-                    }, { onConflict: 'cafe_id,viewer_key' });
-                if (error) throw error;
-            } else {
-                const { error } = await state.supabase
-                    .from(TABLES.likes)
-                    .delete()
-                    .eq('cafe_id', cafe.id)
-                    .eq('viewer_id', state.viewerId);
-                if (error) throw error;
-            }
+        if (nextLiked) {
+            // Target the viewer_key mapping in DB
+            const { error } = await state.supabase
+                .from(TABLES.likes)
+                .upsert({
+                    cafe_id: cafe.id,
+                    viewer_id: state.viewerId,
+                    source: 'web'
+                }, { 
+                    onConflict: 'cafe_id,viewer_key',
+                    ignoreDuplicates: false 
+                });
+            if (error) throw error;
+        } else {
+            const { error } = await state.supabase
+                .from(TABLES.likes)
+                .delete()
+                .eq('cafe_id', cafe.id)
+                .eq('viewer_id', state.viewerId);
+            if (error) throw error;
         }
 
         applyLocalLikeChange(cafeKey, nextLiked);
     } catch (error) {
-        console.warn('Supabase like update failed; saving locally instead.', error);
+        console.error('CRITICAL ERROR: Supabase like update failed!', error);
+        alert('저장 실패 에러: ' + (error.message || JSON.stringify(error)));
         applyLocalLikeChange(cafeKey, nextLiked, true);
     }
 }
@@ -644,6 +723,14 @@ function applyLocalLikeChange(cafeKey, liked, forceLocalPersistence = false) {
 }
 
 async function submitComment(cafe, commentText) {
+    if (!state.supabase) {
+        alert('서버에 연결되지 않아 댓글을 저장할 수 없습니다.');
+        return;
+    }
+    if (!state.viewerId) {
+        console.error('Missing viewerId for comment submission');
+        return;
+    }
     const cafeKey = getCafeKey(cafe);
     const newComment = {
         displayName: '익명',

@@ -472,13 +472,29 @@ select.full-width {
     margin-bottom: 12px;
 }
 
+.comment-preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
 .comment-preview-title {
     font-size: 0.85rem;
     font-weight: 700;
     color: #7a6b61;
-    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+}
+
+.comment-total-badge {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background: #fdf4ec;
+    padding: 2px 8px;
+    border-radius: 999px;
+    border: 1px solid #eadfd7;
 }
 
 .comment-preview-list {

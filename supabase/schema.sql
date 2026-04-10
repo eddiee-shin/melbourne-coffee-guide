@@ -187,8 +187,8 @@ grant select, insert, update, delete on public.admin_users to authenticated;
 
 grant select on public.cafes to anon, authenticated;
 grant select on public.cafes_with_feedback to anon, authenticated;
-grant insert on public.cafe_likes to anon, authenticated;
-grant insert on public.cafe_comments to anon, authenticated;
+grant select, insert, update, delete on public.cafe_likes to anon, authenticated;
+grant select, insert, update, delete on public.cafe_comments to anon, authenticated;
 grant select on public.cafe_comments to anon, authenticated;
 
 drop policy if exists "public read cafes" on public.cafes;
@@ -222,10 +222,28 @@ begin
       for insert
       with check (viewer_id is not null or session_id is not null);
   end if;
+
+  if not exists (
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'cafe_likes' and policyname = 'public update own cafe likes'
+  ) then
+    create policy "public update own cafe likes"
+      on public.cafe_likes
+      for update
+      using (viewer_id is not null or session_id is not null)
+      with check (viewer_id is not null or session_id is not null);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'cafe_likes' and policyname = 'public select cafe likes'
+  ) then
+    create policy "public select cafe likes"
+      on public.cafe_likes
+      for select
+      using (true);
+  end if;
 end $$;
 
--- Public can read like counts only through the aggregate view by default; keep raw table reads restricted.
--- If you want to expose raw likes, add an explicit SELECT policy later.
+-- Public can read like counts and raw likes.
 
 -- Allow public comment submission as pending.
 do $$
@@ -242,6 +260,25 @@ begin
         and char_length(trim(comment_text)) between 1 and 140
       );
   end if;
+
+  if not exists (
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'cafe_comments' and policyname = 'public update own cafe comments'
+  ) then
+    create policy "public update own cafe comments"
+      on public.cafe_comments
+      for update
+      using (viewer_id is not null or session_id is not null)
+      with check (viewer_id is not null or session_id is not null);
+  end if;
+
+  if not exists (
+    select 1 from pg_policies where schemaname = 'public' and tablename = 'cafe_comments' and policyname = 'public delete own cafe comments'
+  ) then
+    create policy "public delete own cafe comments"
+      on public.cafe_comments
+      for delete
+      using (viewer_id is not null or session_id is not null);
+  end if;
 end $$;
 
 -- Public can read approved comments only.
@@ -253,7 +290,7 @@ begin
     create policy "public read approved cafe comments"
       on public.cafe_comments
       for select
-      using (status = 'approved');
+      using (status = 'approved' or viewer_id is not null or session_id is not null);
   end if;
 end $$;
 

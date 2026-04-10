@@ -14,6 +14,7 @@ const state = {
   session: null,
   isAdmin: false,
   cafes: [],
+  comments: [],
   dirty: new Map(),
   uploaded: new Set(),
   saving: new Set(),
@@ -73,6 +74,8 @@ function initDom() {
   dom.consoleOverlay = $('consoleOverlay');
   dom.consoleBody = $('consoleBody');
   dom.closeConsoleBtn = $('closeConsoleBtn');
+  dom.commentSection = $('commentSection');
+  dom.commentTableBody = $('commentTableBody');
 }
 
 function initSupabase() {
@@ -165,7 +168,7 @@ async function afterAuth() {
   dom.logoutBtn.disabled = false;
   dom.scraperBtn.disabled = false;
   dom.saveAllBtn.disabled = false;
-  await loadCafes();
+  await Promise.all([loadCafes(), loadComments()]);
 }
 
 async function loadSessionAndMaybeOpen() {
@@ -207,7 +210,19 @@ async function saveCafe(card) {
   state.saving.delete(id);
   
   if (error) toast('저장 실패', 'error');
-  else { state.dirty.delete(id); renderStats(); toast('저장 완료'); }
+  else { 
+    state.dirty.delete(id); 
+    // If the image_url was updated to a local path, ensure it remains after render
+    const updatedCafe = state.cafes.find(c => String(cafeId(c)) === String(id));
+    if (updatedCafe) {
+      updatedCafe.name = payload.name;
+      updatedCafe.active = payload.active;
+      updatedCafe.image_url = payload.image_url;
+      updatedCafe.one_liner = payload.one_liner;
+    }
+    renderStats(); 
+    toast('저장 완료'); 
+  }
 }
 
 async function saveAll() {
@@ -218,13 +233,63 @@ async function saveAll() {
 }
 
 async function uploadImage(card, file) {
-  const path = `uploads/${Date.now()}-${file.name}`;
-  const { error } = await state.supabase.storage.from(STORAGE_BUCKET).upload(path, file);
-  if (error) return toast('업로드 실패', 'error');
-  const { data } = state.supabase.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-  setFieldValue(card, 'image_url', data.publicUrl);
-  state.dirty.set(card.dataset.id, true);
-  renderStats();
+  if (!state.session) return toast('로그인이 필요합니다.', 'error');
+  
+  toast('사진 업로드 중...', 'info');
+  try {
+    const res = await fetch(`${ADMIN_API_BASE}/api/admin/upload-image`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${state.session.access_token}`,
+        'X-File-Name': file.name,
+        'Content-Type': file.type || 'image/jpeg'
+      },
+      body: await file.arrayBuffer()
+    });
+    
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error || 'Upload failed');
+    }
+    
+    const data = await res.json();
+    setFieldValue(card, 'image_url', data.url);
+    state.dirty.set(card.dataset.id, true);
+    renderStats();
+    toast('사진 업로드 성공');
+  } catch (e) {
+    toast(`업로드 실패: ${e.message}`, 'error');
+  }
+}
+
+async function loadComments() {
+  const { data, error } = await state.supabase
+    .from('cafe_comments')
+    .select(`
+      *,
+      cafes ( name )
+    `)
+    .order('created_at', { ascending: false });
+    
+  if (error) {
+    console.error('Comments load failed:', error);
+    return;
+  }
+  
+  state.comments = data || [];
+  renderComments();
+}
+
+async function deleteComment(id) {
+  if (!confirm('정말 이 댓글을 삭제하시겠습니까?')) return;
+  
+  const { error } = await state.supabase.from('cafe_comments').delete().eq('id', id);
+  if (error) toast('댓글 삭제 실패', 'error');
+  else {
+    toast('댓글 삭제 완료');
+    state.comments = state.comments.filter(c => c.id !== id);
+    renderComments();
+  }
 }
 
 // 7. Rendering
@@ -248,12 +313,27 @@ function renderCard(cafe) {
         </div>
         <div class="actions">
           <label><input type="checkbox" data-field="active" ${cafe.active?'checked':''} /> 활성</label>
+          <div class="spacer"></div>
+          <button class="primary" data-action="upload-trigger">사진 업로드</button>
           <button class="danger" data-action="save-cafe">저장</button>
         </div>
         <div class="field-grid">
           <div class="field full"><label>이름</label><input data-field="name" value="${escapeHTML(cafe.name)}" /></div>
           <div class="field full"><label>이미지 URL</label><input data-field="image_url" value="${escapeHTML(cafe.image_url)}" /></div>
           <div class="field full"><label>한줄평</label><textarea data-field="one_liner">${escapeHTML(cafe.one_liner)}</textarea></div>
+        </div>
+        
+        <!-- Individual Cafe Comments Section -->
+        <div class="card-comments" style="margin-top: 12px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 12px;">
+          <h4 style="margin: 0 0 8px; font-size: 0.85rem; color: var(--muted);">실시간 댓글</h4>
+          <div class="comment-list">
+            ${(state.comments.filter(c => c.cafe_id === cafe.id)).map(c => `
+              <div style="display: flex; gap: 8px; margin-bottom: 6px; font-size: 0.85rem; background: rgba(255,255,255,0.03); padding: 6px; border-radius: 8px;">
+                <div style="flex: 1;">${escapeHTML(c.comment_text)}</div>
+                <button class="danger ghost" style="padding: 2px 6px; font-size: 0.7rem;" onclick="window.MCG_ADMIN.deleteComment('${c.id}')">삭제</button>
+              </div>
+            `).join('') || '<div style="font-size: 0.8rem; color: var(--muted); opacity: 0.6;">아직 댓글이 없습니다.</div>'}
+          </div>
         </div>
       </div>
     </article>
@@ -275,10 +355,22 @@ function render() {
   bindCardEvents();
 }
 
+function renderComments() {
+  // Break the loop: Instead of calling another function, just trigger render
+  render(); 
+}
+
 function bindCardEvents() {
   dom.cafeGrid.querySelectorAll('.cafe-card').forEach(card => {
     card.querySelectorAll('input, textarea').forEach(el => el.addEventListener('input', () => { state.dirty.set(card.dataset.id, true); renderStats(); }));
     card.querySelector('[data-action="save-cafe"]').addEventListener('click', () => saveCafe(card));
+    
+    // Upload trigger
+    const fileInput = card.querySelector('input[type="file"]');
+    card.querySelector('[data-action="upload-trigger"]').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files?.[0]) uploadImage(card, e.target.files[0]);
+    });
   });
 }
 
@@ -318,7 +410,7 @@ function bindEvents() {
   dom.scraperBtn.addEventListener('click', runScraper);
   dom.saveAllBtn.addEventListener('click', saveAll);
   dom.closeConsoleBtn.addEventListener('click', () => dom.consoleOverlay.classList.remove('show'));
-  dom.refreshBtn.addEventListener('click', () => loadCafes());
+  dom.refreshBtn.addEventListener('click', () => { loadCafes(); loadComments(); });
   dom.searchInput?.addEventListener('input', e => { state.filters.search = e.target.value.toLowerCase(); render(); });
   dom.statusFilter?.addEventListener('change', e => { state.filters.status = e.target.value; render(); });
 }
@@ -326,6 +418,8 @@ function bindEvents() {
 // 10. Start
 window.addEventListener('load', async () => {
   initDom();
+  // Expose for inline handlers
+  window.MCG_ADMIN = { deleteComment };
   state.supabase = initSupabase();
   bindEvents();
   await loadSessionAndMaybeOpen();

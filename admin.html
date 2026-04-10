@@ -266,6 +266,15 @@
       .log-line.error { color: #ff7b72; }
       .log-line.success { color: #3fb950; }
       .log-line.info { color: #58a6ff; }
+      
+      /* Comment Management Styles */
+      .comment-section { margin-top: 24px; padding: 20px; }
+      .comment-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      .comment-table th, .comment-table td { 
+        text-align: left; padding: 12px; border-bottom: 1px solid rgba(255,255,255,.06); 
+      }
+      .comment-table th { color: var(--muted); font-size: 0.85rem; font-weight: 500; }
+      .comment-table tr:hover { background: rgba(255,255,255,.02); }
   </style>
 </head>
 <body>
@@ -350,6 +359,26 @@
     <section class="grid-shell hidden" id="dashboard">
       <div class="grid" id="cafeGrid"></div>
       <div class="card empty hidden" id="emptyState">표시할 카페가 없습니다.</div>
+    </section>
+
+    <!-- Comment Management Section -->
+    <section class="card comment-section hidden" id="commentSection">
+      <h2 style="margin: 0 0 12px;">최근 댓글 관리</h2>
+      <div style="overflow-x: auto;">
+        <table class="comment-table">
+          <thead>
+            <tr>
+              <th style="width: 120px;">날짜</th>
+              <th style="width: 150px;">카페</th>
+              <th>내용</th>
+              <th style="width: 80px; text-align: right;">관리</th>
+            </tr>
+          </thead>
+          <tbody id="commentTableBody">
+            <!-- Comments will be rendered here -->
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 

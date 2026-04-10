@@ -18,6 +18,7 @@ const state = {
   dirty: new Map(),
   uploaded: new Set(),
   saving: new Set(),
+  locations: [],
   filters: { search: '', status: 'all' },
 };
 
@@ -77,6 +78,10 @@ function initDom() {
   dom.closeConsoleBtn = $('closeConsoleBtn');
   dom.commentSection = $('commentSection');
   dom.commentTableBody = $('commentTableBody');
+  dom.locationsMgmt = $('locationsMgmt');
+  dom.locationList = $('locationList');
+  dom.newLocationName = $('newLocationName');
+  dom.addLocationBtn = $('addLocationBtn');
 }
 
 function initSupabase() {
@@ -169,7 +174,8 @@ async function afterAuth() {
   dom.logoutBtn.disabled = false;
   dom.scraperBtn.disabled = false;
   dom.saveAllBtn.disabled = false;
-  await Promise.all([loadCafes(), loadComments()]);
+  dom.locationsMgmt.classList.remove('hidden');
+  await Promise.all([loadCafes(), loadComments(), loadLocations()]);
 }
 
 async function loadSessionAndMaybeOpen() {
@@ -203,7 +209,9 @@ async function saveCafe(card) {
     active: getFieldValue(card, 'active'),
     name: getFieldValue(card, 'name'),
     image_url: getFieldValue(card, 'image_url'),
-    one_liner: getFieldValue(card, 'one_liner')
+    one_liner: getFieldValue(card, 'one_liner'),
+    location: getFieldValue(card, 'location'),
+    suburb: getFieldValue(card, 'suburb')
   };
 
   state.saving.add(id);
@@ -220,6 +228,8 @@ async function saveCafe(card) {
       updatedCafe.active = payload.active;
       updatedCafe.image_url = payload.image_url;
       updatedCafe.one_liner = payload.one_liner;
+      updatedCafe.location = payload.location;
+      updatedCafe.suburb = payload.suburb;
     }
     renderStats(); 
     toast('저장 완료'); 
@@ -301,6 +311,48 @@ function renderStats() {
   dom.dirtyCount.textContent = state.dirty.size; dom.uploadedCount.textContent = state.uploaded.size;
 }
 
+async function loadLocations() {
+  const { data, error } = await state.supabase.from('locations').select('*').order('name');
+  if (error) return console.error('Locations load failed:', error);
+  state.locations = data || [];
+  renderLocations();
+}
+function renderLocations() {
+  if (!dom.locationList) return;
+  if (state.locations.length === 0) {
+    dom.locationList.innerHTML = '<div class="small" style="opacity: 0.5;">등록된 위치가 없습니다.</div>';
+    return;
+  }
+  dom.locationList.innerHTML = state.locations.map(loc => `
+    <div class="location-tag">
+      <span>${escapeHTML(loc.name)}</span>
+      <span class="del-btn" onclick="window.MCG_ADMIN.deleteLocation('${loc.id}')">&times;</span>
+    </div>
+  `).join('');
+}
+async function addLocation() {
+  const name = dom.newLocationName.value.trim();
+  if (!name) return;
+  dom.addLocationBtn.disabled = true;
+  const { error } = await state.supabase.from('locations').insert([{ name }]);
+  dom.addLocationBtn.disabled = false;
+  if (error) toast('위치 추가 실패: ' + error.message, 'error');
+  else {
+    dom.newLocationName.value = '';
+    toast('위치 추가 완료');
+    loadLocations();
+  }
+}
+async function deleteLocation(id) {
+  if (!confirm('이 위치를 삭제하시겠습니까? (이 위치를 사용하는 카페 정보는 유지되지만 목록에서는 사라집니다)')) return;
+  const { error } = await state.supabase.from('locations').delete().eq('id', id);
+  if (error) toast('위치 삭제 실패', 'error');
+  else {
+    toast('위치 삭제 완료');
+    loadLocations();
+  }
+}
+
 function renderCard(cafe) {
   const id = cafeId(cafe), dirty = state.dirty.has(String(id)), imageSrc = cafe.image_url || '';
   return `
@@ -322,6 +374,15 @@ function renderCard(cafe) {
           <div class="field full"><label>이름</label><input data-field="name" value="${escapeHTML(cafe.name)}" /></div>
           <div class="field full"><label>이미지 URL</label><input data-field="image_url" value="${escapeHTML(cafe.image_url)}" /></div>
           <div class="field full"><label>한줄평</label><textarea data-field="one_liner">${escapeHTML(cafe.one_liner)}</textarea></div>
+          <div class="field"><label>위치</label>
+            <select data-field="location">
+              <option value="">-- 위치 선택 --</option>
+              ${state.locations.map(loc => `
+                <option value="${escapeHTML(loc.name)}" ${cafe.location === loc.name ? 'selected' : ''}>${escapeHTML(loc.name)}</option>
+              `).join('')}
+            </select>
+          </div>
+          <div class="field"><label>서브럽</label><input data-field="suburb" value="${escapeHTML(cafe.suburb || '')}" /></div>
         </div>
         
         <!-- Individual Cafe Comments Section -->
@@ -414,6 +475,8 @@ function bindEvents() {
   dom.loginBtn.addEventListener('click', handleLogin);
   dom.logoutBtn.addEventListener('click', handleLogout);
   dom.scraperBtn.addEventListener('click', runScraper);
+  dom.addLocationBtn.addEventListener('click', addLocation);
+  dom.newLocationName.addEventListener('keypress', e => { if (e.key === 'Enter') addLocation(); });
   dom.saveAllBtn.addEventListener('click', saveAll);
   dom.closeConsoleBtn.addEventListener('click', () => dom.consoleOverlay.classList.remove('show'));
   dom.refreshBtn.addEventListener('click', () => { loadCafes(); loadComments(); });
@@ -425,7 +488,7 @@ function bindEvents() {
 window.addEventListener('load', async () => {
   initDom();
   // Expose for inline handlers
-  window.MCG_ADMIN = { deleteComment };
+  window.MCG_ADMIN = { deleteComment, deleteLocation };
   state.supabase = initSupabase();
   bindEvents();
   await loadSessionAndMaybeOpen();

@@ -91,7 +91,7 @@ def fetch_existing_cafes(supabase_url: str | None, supabase_key: str | None, tab
     if not supabase_url or not supabase_key:
         return []
 
-    endpoint = f"{trim_slash(supabase_url)}/rest/v1/{table}?select=slug,name&order=name.asc"
+    endpoint = f"{trim_slash(supabase_url)}/rest/v1/{table}?select=*&order=name.asc"
     response = requests.get(
         endpoint,
         headers={
@@ -346,10 +346,15 @@ if __name__ == "__main__":
 
     existing_names: list[str] = []
     existing_cafes: list[dict[str, Any]] = []
+    existing_data_map: dict[str, dict[str, Any]] = {}
     if args.mode != "dry-run" or args.supabase_url or args.supabase_key:
         try:
             existing_cafes = fetch_existing_cafes(args.supabase_url, args.supabase_key, args.table)
             existing_names = [row.get("name", "") for row in existing_cafes if row.get("name")]
+            # Map by normalized name for easy lookup
+            for row in existing_cafes:
+                if row.get("name"):
+                    existing_data_map[row["name"].strip().lower()] = row
             print(f"-> Found {len(existing_names)} existing cafes in Supabase.")
         except Exception as exc:
             if args.mode == "dry-run":
@@ -379,12 +384,20 @@ if __name__ == "__main__":
                 if found:
                     # Find the best match (closest name)
                     best = found[0]
-                    cafes_to_persist.append({
-                        "slug": slugify(name),
+                    existing_row = existing_data_map.get(name.strip().lower(), {})
+                    
+                    # Create payload preserving all required fields
+                    payload = {
+                        **existing_row, # Keep all current fields (location, suburb, atmosphere, etc.)
                         "rating": best["rating"],
                         "reviews": best["reviews"],
                         "last_scraped_at": datetime.now(timezone.utc).isoformat()
-                    })
+                    }
+                    # Remove DB-internal fields that shouldn't be in upsert
+                    for key in ["id", "created_at", "updated_at", "updated_by"]:
+                        payload.pop(key, None)
+                        
+                    cafes_to_persist.append(payload)
                     updated_count += 1
                     print(f"  [REFRESH] '{name}': {best['rating']} ({best['reviews']} reviews)")
                 else:
@@ -412,12 +425,20 @@ if __name__ == "__main__":
         cafe_key = cafe_name.strip().lower()
         if cafe_key and cafe_key in existing_name_set:
             print(f"  -> Existing cafe found: '{cafe_name}'. Refreshing stats only.")
-            cafes_to_persist.append({
-                "slug": slugify(cafe_name),
+            existing_row = existing_data_map.get(cafe_key, {})
+            
+            # Create payload preserving all required fields
+            payload = {
+                **existing_row,
                 "rating": cafe.get("rating", 0),
                 "reviews": cafe.get("reviews", 0),
                 "last_scraped_at": datetime.now(timezone.utc).isoformat()
-            })
+            }
+            # Remove DB-internal fields
+            for key in ["id", "created_at", "updated_at", "updated_by"]:
+                payload.pop(key, None)
+
+            cafes_to_persist.append(payload)
             updated_count += 1
             continue
 

@@ -249,6 +249,23 @@
       }
       .console-body::-webkit-scrollbar { width: 8px; }
       .console-body::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+      
+      /* Location Management Styles */
+      .locations-mgmt { margin-bottom: 24px; padding: 20px; }
+      .mgmt-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 12px; }
+      .mgmt-header h3 { margin: 0; font-size: 1.1rem; }
+      .mgmt-controls { display: flex; gap: 8px; }
+      .location-list { display: flex; flex-wrap: wrap; gap: 8px; }
+      .location-tag { 
+        display: flex; align-items: center; gap: 6px; 
+        background: rgba(255,255,255,0.05); padding: 4px 10px; 
+        border-radius: 6px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1);
+      }
+      .location-tag .del-btn { 
+        cursor: pointer; opacity: 0.5; font-size: 1.2rem; line-height: 1; 
+      }
+      .location-tag .del-btn:hover { opacity: 1; color: var(--danger); }
+      
       .console-close {
         background: none;
         border: none;
@@ -340,6 +357,19 @@
       <div class="pill">비활성: <strong id="inactiveCount">0</strong></div>
       <div class="pill">수정 중: <strong id="dirtyCount">0</strong></div>
       <div class="pill">업로드됨: <strong id="uploadedCount">0</strong></div>
+    </section>
+
+    <section class="card locations-mgmt hidden" id="locationsMgmt">
+      <div class="mgmt-header">
+        <h3>📍 위치 관리 (Location List)</h3>
+        <div class="mgmt-controls">
+          <input id="newLocationName" type="text" placeholder="새 위치 이름 (예: Richmond)" style="min-width: 200px;" />
+          <button class="primary" id="addLocationBtn">추가</button>
+        </div>
+      </div>
+      <div class="location-list" id="locationList">
+        <div class="small" style="opacity: 0.5;">위치 목록을 불러오는 중...</div>
+      </div>
     </section>
 
     <section class="card filters hidden" id="filtersBar">

@@ -1,0 +1,20 @@
+127.0.0.1 - - [10/Apr/2026 09:36:14] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 09:36:14] "GET /admin.js?v=v_final_recovery HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 09:36:14] code 404, message File not found
+127.0.0.1 - - [10/Apr/2026 09:36:14] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Apr/2026 09:36:34] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 09:36:34] "GET /style.css HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 09:36:34] "GET /app.js?v=20260410-final-v2 HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:08:37] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:08:37] "GET /admin.js?v=v_final_recovery HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:11:37] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:11:37] "GET /admin.js?v=v_final_recovery HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:11:37] code 404, message File not found
+127.0.0.1 - - [10/Apr/2026 10:11:37] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Apr/2026 10:11:46] "GET /admin.html HTTP/1.1" 304 -
+127.0.0.1 - - [10/Apr/2026 10:11:48] "GET /admin.html HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:11:48] "GET /admin.js?v=v_final_recovery HTTP/1.1" 200 -
+127.0.0.1 - - [10/Apr/2026 10:11:49] code 404, message File not found
+127.0.0.1 - - [10/Apr/2026 10:11:49] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [10/Apr/2026 10:11:59] "POST /api/admin/upload-image HTTP/1.1" 404 -
+127.0.0.1 - - [10/Apr/2026 10:12:41] "POST /api/admin/upload-image HTTP/1.1" 404 -

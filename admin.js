@@ -55,6 +55,7 @@ function initDom() {
   dom.scraperQuery = $('scraperQuery');
   dom.scraperMode = $('scraperMode');
   dom.scraperMaxNew = $('scraperMaxNew');
+  dom.scraperRefreshAll = $('scraperRefreshAll');
   dom.statsBar = $('statsBar');
   dom.filtersBar = $('filtersBar');
   dom.dashboard = $('dashboard');
@@ -393,7 +394,12 @@ async function runScraper() {
     const res = await fetch(`${ADMIN_API_BASE}/api/admin/run-scraper`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${state.session.access_token}` },
-      body: JSON.stringify({ query: dom.scraperQuery.value, mode: dom.scraperMode.value, maxNew: dom.scraperMaxNew.value })
+      body: JSON.stringify({ 
+        query: dom.scraperQuery.value, 
+        mode: dom.scraperMode.value, 
+        maxNew: dom.scraperMaxNew.value,
+        refreshAll: dom.scraperRefreshAll.checked
+      })
     });
     const reader = res.body.getReader(), decoder = new TextDecoder();
     while (true) {

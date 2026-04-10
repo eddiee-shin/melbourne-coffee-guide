@@ -225,6 +225,7 @@ class AdminHandler(SimpleHTTPRequestHandler):
         query = str(body.get('query') or 'Melbourne coffee')
         mode = str(body.get('mode') or 'rest')
         max_new = body.get('maxNew')
+        refresh_all = bool(body.get('refreshAll', False))
         try:
             max_new_int = int(max_new) if max_new not in (None, '', 0, '0') else None
         except (TypeError, ValueError):
@@ -240,6 +241,8 @@ class AdminHandler(SimpleHTTPRequestHandler):
         cmd = [sys.executable, str(SCRAPER_PATH), query, '--mode', mode]
         if max_new_int:
             cmd += ['--max-new', str(max_new_int)]
+        if refresh_all:
+            cmd += ['--refresh-all']
 
         env = os.environ.copy()
         env['SUPABASE_URL'] = SUPABASE_URL
@@ -319,16 +322,37 @@ class AdminHandler(SimpleHTTPRequestHandler):
             with open(target_path, 'wb') as f:
                 f.write(self.rfile.read(length))
             
-            # Return the relative path from ROOT point of view
-            # Since 8000 port serves ROOT, the URL will be /images/filename
+            print(f"Image uploaded successfully: {safe_filename}")
+            self.git_sync_image(safe_filename)
+            
             json_response(self, HTTPStatus.OK, {
                 'url': f'/images/{safe_filename}',
                 'path': str(target_path.relative_to(ROOT))
             })
-            print(f"Image uploaded successfully: {safe_filename}")
         except Exception as exc:
             print(f"Failed to save image: {exc}")
             json_response(self, HTTPStatus.INTERNAL_SERVER_ERROR, {'error': f'Save failed: {exc}'})
+
+    def git_sync_image(self, filename: str) -> None:
+        """Automated git add, commit, and push for the uploaded image."""
+        try:
+            print(f"Starting automated Git sync for {filename}...")
+            
+            # 1. git add
+            subprocess.run(['git', 'add', f'images/{filename}'], cwd=str(ROOT), check=True)
+            
+            # 2. git commit
+            commit_msg = f"auto: upload image {filename}"
+            subprocess.run(['git', 'commit', '-m', commit_msg], cwd=str(ROOT), check=True)
+            
+            # 3. git push (Background)
+            # We use a non-blocking background push to not make the user wait too long
+            subprocess.Popen(['git', 'push', 'origin', 'main'], cwd=str(ROOT))
+            
+            print(f"Git sync initiated for {filename}")
+        except Exception as e:
+            print(f"Git sync failed: {e}")
+            # We don't fail the whole request if git fails, just log it
 
 
 if __name__ == '__main__':

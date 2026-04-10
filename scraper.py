@@ -12,6 +12,7 @@ import json
 import os
 import sys
 import traceback
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -72,6 +73,11 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_MAX_NEW,
         help="Maximum number of new cafes to add in a single run (0 = unlimited)",
     )
+    parser.add_argument(
+        "--refresh-all",
+        action="store_true",
+        help="Refresh ratings and review counts for all existing cafes in Supabase",
+    )
     return parser.parse_args()
 
 
@@ -102,7 +108,7 @@ def fetch_existing_cafes(supabase_url: str | None, supabase_key: str | None, tab
     return data
 
 
-def search_cafes(query: str) -> list[dict[str, Any]]:
+def search_cafes(query: str, exact_match: bool = False) -> list[dict[str, Any]]:
     print(f"\nSearching Google Maps for: '{query}'...")
 
     search_url = "https://places.googleapis.com/v1/places:searchText"
@@ -360,19 +366,65 @@ if __name__ == "__main__":
         raise SystemExit(1)
 
     added_count = 0
-    new_cafes: list[dict[str, Any]] = []
+    updated_count = 0
+    cafes_to_persist: list[dict[str, Any]] = []
+    
+    # --- Mode 1: Refresh Stats for All Existing Cafes ---
+    if args.refresh_all:
+        print(f"\n---> Starting full stats refresh for {len(existing_names)} cafes...")
+        for name in existing_names:
+            try:
+                # Search for the exact cafe name
+                found = search_cafes(name, exact_match=True)
+                if found:
+                    # Find the best match (closest name)
+                    best = found[0]
+                    cafes_to_persist.append({
+                        "slug": slugify(name),
+                        "rating": best["rating"],
+                        "reviews": best["reviews"],
+                        "last_scraped_at": datetime.now(timezone.utc).isoformat()
+                    })
+                    updated_count += 1
+                    print(f"  [REFRESH] '{name}': {best['rating']} ({best['reviews']} reviews)")
+                else:
+                    print(f"  [SKIP] Could not find '{name}' on Google Maps.")
+            except Exception as e:
+                print(f"  [ERROR] Failed to refresh '{name}': {e}")
+        
+        persist_cafes(
+            cafes_to_persist,
+            args.mode,
+            args.table,
+            args.supabase_url,
+            args.supabase_key,
+            args.batch_size,
+            args.output,
+        )
+        print(f"\nDone! Refreshed stats for {updated_count} cafe(s).")
+        sys.exit(0)
+
+    # --- Mode 2: Standard Search and Smart Upsert ---
     existing_name_set = {name.strip().lower() for name in existing_names}
 
     for cafe in candidates:
         cafe_name = cafe.get("name", "")
         cafe_key = cafe_name.strip().lower()
         if cafe_key and cafe_key in existing_name_set:
-            print(f"  -> Skipping '{cafe_name}' (Already in Supabase)")
+            print(f"  -> Existing cafe found: '{cafe_name}'. Refreshing stats only.")
+            cafes_to_persist.append({
+                "slug": slugify(cafe_name),
+                "rating": cafe.get("rating", 0),
+                "reviews": cafe.get("reviews", 0),
+                "last_scraped_at": datetime.now(timezone.utc).isoformat()
+            })
+            updated_count += 1
             continue
 
         analyzed = analyze_cafe_with_ai(cafe, existing_names)
         if analyzed:
-            new_cafes.append(analyzed)
+            analyzed["last_scraped_at"] = datetime.now(timezone.utc).isoformat()
+            cafes_to_persist.append(analyzed)
             added_count += 1
             if analyzed.get("name"):
                 existing_names.append(analyzed["name"])
@@ -383,7 +435,7 @@ if __name__ == "__main__":
                 break
 
     persist_cafes(
-        new_cafes,
+        cafes_to_persist,
         args.mode,
         args.table,
         args.supabase_url,
@@ -392,4 +444,4 @@ if __name__ == "__main__":
         args.output,
     )
 
-    print(f"\nDone! Prepared {len(new_cafes)} new cafe record(s).")
+    print(f"\nDone! Added {added_count} new and updated {updated_count} existing cafe(s).")
